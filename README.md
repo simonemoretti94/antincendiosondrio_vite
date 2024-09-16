@@ -30,7 +30,29 @@ Se non lo hai già fatto, crea un branch gh-pages nel tuo repository GitHub.
 
 git subtree push --prefix dist origin gh-pages
 
-4. Automatizza il deploy con GitHub Actions
+4. Non è necessario eseguire npm run build ogni volta che fai un commit, ma dovresti farlo ogni volta che vuoi aggiornare il branch gh-pages con le ultime modifiche. Ecco come puoi gestire il flusso di lavoro:
+
+Lavoro quotidiano:
+Continua a lavorare sul tuo progetto in VSCode come fai normalmente.
+Fai commit delle tue modifiche nel branch main regolarmente.
+git add .
+git commit -m "Descrizione delle modifiche"
+git push origin main
+
+Aggiornamento del branch gh-pages:
+Quando sei pronto per aggiornare il branch gh-pages con le ultime modifiche, esegui npm run build per generare i file di build nella directory dist.
+npm run build
+
+Aggiungi i file generati nella directory dist al tuo repository Git.
+git add dist -f
+git commit -m "Aggiorna dist directory"
+
+Pusha le modifiche nel branch gh-pages.
+git subtree push --prefix dist origin gh-pages
+
+In questo modo, puoi continuare a lavorare sul tuo progetto senza dover eseguire npm run build ogni volta che fai un commit. Esegui npm run build solo quando vuoi aggiornare il branch gh-pages con le ultime modifiche.
+
+4.1 Automatizza il deploy con GitHub Actions
 Puoi creare un workflow GitHub Actions per automatizzare il processo di deploy. Crea una cartella .github/workflows nella radice del tuo repository e aggiungi un file deploy.yml con il seguente contenuto:
 
 name: Deploy to GitHub Pages

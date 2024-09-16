@@ -49,13 +49,6 @@ export default {
 
 <style scoped>
 /*
-1. aggiunge file modificati
-
-git add .
-git commit -m "Commit message"
-
-2. pusha le modifiche nel branch gh-pages
-
-git subtree push --prefix dist origin gh-pages
+hi guys!
 */
 </style>
