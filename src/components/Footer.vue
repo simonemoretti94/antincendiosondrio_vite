@@ -89,4 +89,39 @@ export default {
     </footer>
 </template>
 
-<style scoped></style>
+<style scoped>
+/* imported footer style, shared within all pages */
+
+footer {
+    min-height: 150px;
+    position: relative;
+    padding-top: 20px;
+    bottom: 0;
+    border-top: 2px solid #225378;
+
+    & a {
+        text-decoration: none;
+    }
+}
+
+.mainrow {
+    padding-bottom: 10px;
+}
+
+.sitnavH1,
+.contactus,
+.socialM {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #225378;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+}
+
+ul {
+    list-style: none;
+    margin-bottom: 0px;
+}
+</style>
