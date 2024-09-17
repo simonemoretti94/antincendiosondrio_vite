@@ -1,12 +1,12 @@
 <script>
 import { state } from '/state.js';
-//import * from '';
+import loginpage from './subcomponents/login.vue';
 
 export default {
     name: 'appMain',
     //emits: [''],
     components: { //imported components 
-        //*,
+        loginpage,
 
     },
     data() { //variables, bool, array, objects and so on
@@ -34,15 +34,7 @@ export default {
 </script>
 
 <template>
-    <h1>hi guys!</h1>
+    <loginpage></loginpage>
 </template>
 
-<style scoped>
-/*
-    npm install bootstrap
-    npm install jquery popper.js
-    import 'bootstrap/dist/css/bootstrap.css
-    import 'jquery'
-    import 'popper.js'/main.js   import 'bootstrap'
-    */
-</style>
+<style scoped></style>
