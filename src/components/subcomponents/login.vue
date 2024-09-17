@@ -3,6 +3,49 @@ import { state } from '/state.js';
 
 export default {
     name: 'loginpage',
+    data() {
+        return {
+            state,
+        }
+    },
+
+    mounted() {
+        console.log(state.users);
+
+        document.getElementById('login_form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Previene l'invio del modulol
+
+            state.userData = [];
+            let tempString;
+
+            let username = document.getElementById('username').value;
+
+            let password = document.getElementById('password').value;
+
+            if (username && password) {
+                tempString = username + ' ' + password;
+                //console.log('user data: ', tempString);
+                state.userData.push(username);
+                state.userData.push(password);
+                //console.log(userData);
+            }
+            else {
+                alert('some record is empty');
+            }
+
+            state.users.forEach(element => {
+                if (element[0] == username && element[1] == password) {
+                    state.found = true;
+                    state.userData.push(element[2]);
+                    state.userData.push(element[3]);
+                    console.log(state.userData);
+                    //console.log('element: ', element[0], ' user: ', username, ' real name: ', userData[2], ' surname: ', userData[3]);
+                }
+            });
+            if (!state.found) { alert('user not found!'); }
+        },
+        )
+    }
 }
 </script>
 

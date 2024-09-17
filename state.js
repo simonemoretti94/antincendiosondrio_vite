@@ -2,6 +2,21 @@ import { reactive } from 'vue';
 
 export const state = reactive({
 
+    users: [
+        //['simone_moretti', 'simone94', 'simone', 'moretti'],
+        ['test', 'test', 'simone', 'moretti'],
+        ['emmanuele_motta', 'emmanuele00', 'emmanuele', 'motta'],
+        ['fabio_paganoni', 'fabio00', 'fabio', 'paganoni'],
+        ['carlo_munafo', 'carlo00', 'carlo', 'munafo'],
+        ['rosario_scerra', 'rosarios00', 'rosarios', 'scerra'],
+        ['rosario_buttice', 'rosariob00', 'rosariob', 'buttice'],
+        ['alessandro_alecce', 'alessandro00', 'alessandro', 'alecce'],
+        //['username', 'password', 'realname', 'realsurname'],
+    ],
+
+    found: false,
+    userData: [],
+
 
     calendar: [
         {
