@@ -14,25 +14,28 @@ export default {
     return {}
   },
   methods: { //functions; all kind of manipulations
+    updateDateTime() {
+      const now = new Date();
+      const day = String(now.getDate()).padStart(2, '0');
+      const month = String(now.getMonth() + 1).padStart(2, '0'); // I mesi in JavaScript sono indicizzati da 0 (gennaio) a 11 (dicembre)
+      const year = now.getFullYear();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
 
-  },
-  computed: { // computed properties are cached based on their reactive dependencies
-    //return example this.value1 + this.value2;
+      const dateString = `${day}/${month}/${year}`;
+      const timeString = `${hours}:${minutes}:${seconds}`;
 
-  },
-  created() { //Run code before DOM's initial rendering
-    return //example this.value1 + this.value2;
+      document.getElementById('currentDateTime').innerHTML = dateString + '<br>' + timeString;
 
+    }
   },
-  mounted() { //Run code after DOM's initial rendering
-    /*axios
-    .get('')
-    .then((response) => {
-       console.log(response);
-    } )*/
-  },
-  watch: { //triggers a function whenever a reactive property changes
+  mounted() {
+    // Aggiorna la data e l'ora ogni secondo
+    setInterval(this.updateDateTime, 1000);
 
+    // Aggiorna la data e l'ora immediatamente quando la pagina viene caricata
+    this.updateDateTime();
   },
 }
 </script>
@@ -43,6 +46,7 @@ export default {
       <img id="logo" src="/logo.jpg" alt="logo">
       <span>antincendio sondrio<small><sup>&copy;</sup></small></span>
     </div>
+    <p id="currentDateTime">ciao</p>
   </header>
 </template>
 
@@ -55,6 +59,8 @@ header {
   align-items: center;
 
   >div {
+    position: relative;
+
     & img#logo {
       width: 30px;
       height: 30px;
@@ -69,6 +75,19 @@ header {
       @media screen and (max-width: 450px) {
         font-size: medium;
       }
+    }
+  }
+
+  p#currentDateTime {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+
+    text-align: center;
+    font-size: small;
+
+    @media screen and (max-width: 350px) {
+      font-size: x-small;
     }
   }
 }
