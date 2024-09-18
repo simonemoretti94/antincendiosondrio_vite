@@ -39,6 +39,7 @@ export default {
 
             console.log(this.imgPath, typeof this.imgPath);
 
+
             /**
              * table handler
              */
