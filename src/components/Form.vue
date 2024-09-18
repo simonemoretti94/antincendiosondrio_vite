@@ -74,32 +74,32 @@ export default {
             <small>Select above n days</small>
             <hr>
         </form>
-        <button class="btn btn-primary" @click="formSubmit()">submit</button>
-        <p>{{ combinedValues }}</p>
+        <div class="d-flex justify-content-center">
+            <button class="btn btn-primary" @click="formSubmit()">submit</button>
+        </div>
+        <!-- <p>{{ combinedValues }}</p> -->
     </div>
 
     <!-- input table -->
-    <div class="container">
-        <div v-for="day in this.month_days">
-            <div class="col-12 d-flex">
-                <div class="col-6 d-flex flex-column justify-content-center px-1">
-                    <p>Day:</p>
-                    <input type="text">
-                    <small>Name 1</small>
-                    <input type="text">
-                    <small>Name 2</small>
-                </div>
-                <div class="col-6 d-flex flex-column justify-content-center px-1">
-                    <p>Night:</p>
-                    <input type="text">
-                    <small>Name 1</small>
-                    <input type="text">
-                    <small>Name 2</small>
-                </div>
+    <div v-if="!this.monthInfoContainer" v-for="(day, index) in this.month_days" :key="index" class="container">
+        <div class="col-12 d-flex">
+            <div class="col-6 d-flex flex-column justify-content-center px-1">
+                <p>Day {{ index + 1 }}</p>
+                <input type="text">
+                <small>Name 1</small>
+                <input type="text">
+                <small>Name 2</small>
             </div>
-            <hr>
-            <hr>
+            <div class="col-6 d-flex flex-column justify-content-center px-1">
+                <p>Night {{ index + 1 }}</p>
+                <input type="text">
+                <small>Name 1</small>
+                <input type="text">
+                <small>Name 2</small>
+            </div>
         </div>
+        <hr>
+        <hr>
     </div>
 </template>
 
