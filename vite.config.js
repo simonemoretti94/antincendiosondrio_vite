@@ -5,4 +5,5 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   base: '/antincendiosondrio_vite/',
   plugins: [vue()],
-})
+  publicDir: 'public',
+});
