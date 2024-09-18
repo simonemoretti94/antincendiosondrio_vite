@@ -31,6 +31,12 @@ export const state = reactive({
     isAdmin: false,
     formComponent: false,
 
+    /**
+     * handles shifts img
+     */
+    monthImage: '',
+    imgPath: '',
+
 
     calendar: [
         {
