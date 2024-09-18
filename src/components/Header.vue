@@ -43,7 +43,7 @@ export default {
 <template>
   <header>
     <div class="w-75 ms-2">
-      <img id="logo" src="/logo.jpg" alt="logo">
+      <img id="logo" src="/icons/logo.jpg" alt="logo">
       <span>antincendio sondrio<small><sup>&copy;</sup></small></span>
     </div>
     <p id="currentDateTime">ciao</p>
