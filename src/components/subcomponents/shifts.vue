@@ -84,7 +84,7 @@ export default {
         <img id="loaded_img" :src="this.imgPath" :alt="monthImage">
     </div>
     <div v-if="this.monthImage">
-        <div class="table-responsive">
+        <div class="table-responsive w-100">
             <table class="table table-primary text-center">
                 <thead>
                     <tr>
@@ -121,6 +121,76 @@ img#loaded_img {
     width: 100%;
 }
 
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: separate !important;
+}
+
+th,
+td {
+    word-wrap: break-word;
+
+    @media screen and (max-width: 576px) {
+        padding: .25rem !important;
+    }
+}
+
+@media screen and (max-width: 576px) {
+
+    th:last-child,
+    td:last-child {
+        display: none;
+    }
+}
+
+th:first-child,
+td:first-child {
+    width: 10%;
+
+    @media screen and (max-width: 576px) {
+        width: 15%;
+    }
+
+    @media screen and (max-width: 456px) {
+        font-size: small;
+    }
+}
+
+th:nth-child(2),
+th:nth-child(3),
+td:nth-last-child(2),
+td:nth-child(3) {
+    width: 40%;
+
+    @media screen and (max-width: 576px) {
+        width: calc((100% - 15%) / 2);
+    }
+}
+
+th:last-child,
+td:last-child {
+    width: 10%;
+
+    @media screen and (max-width: 576px) {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 576px) {
+
+    th:last-child,
+    td:last-child {
+        display: none;
+    }
+}
+
+
 .bg-aqua {
     background-color: #cfe2ff;
 }
@@ -131,6 +201,12 @@ img#loaded_img {
 
 .night {
     background-color: #E57D36;
+}
+
+.d-none-500 {
+    @media screen and (max-width: 500px) {
+        display: none;
+    }
 }
 
 td div {
@@ -146,6 +222,22 @@ td div {
         color: white;
         text-shadow: 0 0 1px black;
         margin: auto .2rem;
+
+        @media screen and (max-width: 576px) {
+            font-size: small;
+        }
+
+        @media screen and (max-width: 360px) {
+            font-size: x-small;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        width: 80%;
+    }
+
+    @media screen and (max-width: 576px) {
+        width: 100%;
     }
 }
 </style>
