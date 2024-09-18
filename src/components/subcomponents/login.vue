@@ -58,13 +58,13 @@ export default {
             <form id="login_form" method="get">
                 <p class="text-center text-dark" style="font-weight: 500;">Inserisci le tue credenziali</p>
                 <div class="d-flex justify-content-center">
-                    <input type="text" name="username" id="username" class="rounded-1 me-1 text-center w-auto" value=""
-                        required>
+                    <input type="text" name="username" id="username" class="rounded-1 me-1 text-center w-auto"
+                        value="simone_moretti" required>
                     <small for="username" class="d-block text-center">Username</small>
                 </div>
                 <hr>
                 <div class="d-flex justify-content-center">
-                    <input type="text" name="password" id="password" class="rounded-1 me-1 text-center " value=""
+                    <input type="text" name="password" id="password" class="rounded-1 me-1 text-center" value="simone94"
                         required>
                     <small for="password" class="d-block text-center">Password</small>
                 </div>

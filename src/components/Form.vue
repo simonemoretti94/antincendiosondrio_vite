@@ -12,13 +12,43 @@ export default {
 
         return {
             state,
+
+            formReady: false,
         }
+    },
+    mounted() {
+
     },
 }
 </script>
 
 <template>
-    <h1>hi from form component!</h1>
+    <div class="container-fluid">
+        <div class="container">
+            <p>What's the month's name?</p>
+            <select name="month_select" id="month_select">
+                <option selected disabled>2024</option>
+                <option value="november_2024">november_2024</option>
+                <option value="december_2024">december_2024</option>
+                <option selected disabled>old 2024...</option>
+            </select>
+            <hr class="my-1">
+            <p>Of many days is it composed?</p>
+            <input id="month_days" type="number">
+            <small>type above n days</small>
+            <hr>
+        </div>
+        <form action="input_form" method="get" class="col-xl-3 col-lg-4 col-md-12 col-sm-12">
+        </form>
+    </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+form#input_form {
+    & div {
+        margin: 1rem auto;
+        padding: 1rem;
+        border: solid .5px black;
+    }
+}
+</style>
