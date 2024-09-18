@@ -61,7 +61,7 @@ export default {
                         <li v-if="!state.formComponent && state.found">
                             <a href="#" @click="showForm">To Form Page</a>
                         </li>
-                        <li v-if="!state.shiftsComponent && state.found">
+                        <li v-if="!state.shiftsComponent && state.found && state.isAdmin">
                             <a href="#" @click="showHome">To Shifts Page</a>
                         </li>
                     </ul>
