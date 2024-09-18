@@ -3,7 +3,7 @@ import { reactive } from 'vue';
 export const state = reactive({
 
     users: [
-        //['simone_moretti', 'simone94', 'simone', 'moretti'],
+        ['simone_moretti', 'simone94', 'simone', 'moretti'],
         ['test', 'test', 'simone', 'moretti'],
         ['emmanuele_motta', 'emmanuele00', 'emmanuele', 'motta'],
         ['fabio_paganoni', 'fabio00', 'fabio', 'paganoni'],
@@ -16,6 +16,7 @@ export const state = reactive({
 
     found: false,
     userData: [],
+    isAdmin: false,
 
 
     calendar: [

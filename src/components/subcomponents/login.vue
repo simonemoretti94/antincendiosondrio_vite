@@ -36,6 +36,9 @@ export default {
             state.users.forEach(element => {
                 if (element[0] == username && element[1] == password) {
                     state.found = true;
+                    if (username == 'simone_moretti') {
+                        state.isAdmin = true;
+                    }
                     state.userData.push(element[2]);
                     state.userData.push(element[3]);
                     console.log(state.userData);
