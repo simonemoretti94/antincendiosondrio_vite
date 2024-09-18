@@ -99,8 +99,14 @@ export default {
                     <tr :class="{ 'bg-light': index % 2 === 0, 'bg-aqua': index % 2 !== 0 }"
                         v-for="(shift, index) in this.selectedMonth.schedule">
                         <td scope="row">{{ index + 1 }}</td>
-                        <td>{{ shift.dayShift[0] }} | {{ shift.dayShift[1] }}</td>
-                        <td>{{ shift.nightShift[0] }} | {{ shift.nightShift[1] }}</td>
+                        <td>
+                            <div class="day"><span>{{ shift.dayShift[0] }}</span><span>{{ shift.dayShift[1] }}</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="night"><span>{{ shift.nightShift[0] }}</span><span>{{ shift.nightShift[1]
+                                    }}</span></div>
+                        </td>
                         <td>N/A</td>
                     </tr>
                 </tbody>
@@ -117,5 +123,29 @@ img#loaded_img {
 
 .bg-aqua {
     background-color: #cfe2ff;
+}
+
+.day {
+    background-color: #53852C;
+}
+
+.night {
+    background-color: #E57D36;
+}
+
+td div {
+    width: 60%;
+    margin: auto auto;
+    display: flex;
+    justify-content: space-evenly;
+    border: solid .5px black;
+    border-radius: 6px;
+
+    & span {
+        text-transform: capitalize;
+        color: white;
+        text-shadow: 0 0 1px black;
+        margin: auto .2rem;
+    }
 }
 </style>
