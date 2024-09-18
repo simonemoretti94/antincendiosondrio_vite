@@ -107,12 +107,13 @@ export default {
                             <div class="night"><span>{{ shift.nightShift[0] }}</span><span>{{ shift.nightShift[1]
                                     }}</span></div>
                         </td>
-                        <td>N/A</td>
+                        <td :class="{ 'ps': shift.psShift[0] }">
+                            <span>{{ shift.psShift[0] ? shift.psShift[0] : '-' }}</span>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-
     </div>
 </template>
 
@@ -201,6 +202,14 @@ td:last-child {
 
 .night {
     background-color: #E57D36;
+}
+
+.ps {
+    background-color: #fbec99;
+
+    >span {
+        font-size: x-small;
+    }
 }
 
 .d-none-500 {
