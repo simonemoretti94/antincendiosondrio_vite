@@ -26,12 +26,12 @@ export default {
             /**
              * in sviluppo
              */
-            //this.imgPath = 'http://localhost:5173/antincendiosondrio_vite/months/' + this.monthImage + '.jpg';
+            this.imgPath = 'http://localhost:5173/antincendiosondrio_vite/months/' + this.monthImage + '.jpg';
 
             /**
              * in produzione
              */
-            this.imgPath = 'https://simonemoretti94.github.io/antincendiosondrio_vite/months/' + this.monthImage + '.jpg';
+            //this.imgPath = 'https://simonemoretti94.github.io/antincendiosondrio_vite/months/' + this.monthImage + '.jpg';
 
             console.log(this.imgPath, typeof this.imgPath);
         }
@@ -61,6 +61,5 @@ export default {
     </div>
     <div v-if="this.monthImage" id="month_image" class="container my-2">
         <img :src="this.imgPath" :alt="monthImage">
-        <img src="/public/months/october_2024.jpg" alt="">
     </div>
 </template>
