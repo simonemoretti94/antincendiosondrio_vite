@@ -13,27 +13,42 @@ export default {
         return {
             state,
 
-            formReady: false,
+            //formReady: false,
+            month_select: '',
+            month_days: '',
         }
     },
-    mounted() {
-
+    methods: {
+        formSubmit() {
+            if (this.month_select && this.month_days) {
+                console.log('month: ', this.month_select, 'n days: ', this.month_days);
+            }
+            else {
+                console.log('some value is empty!');
+            }
+        },
     },
+    computed: {
+        combinedValues() {
+            return this.month_select + ' , ' + this.month_days;
+        }
+    }
 }
 </script>
 
 <template>
-    <div class="container-fluid">
-        <div class="container">
+    <div class="container">
+        <form action="input_form" method="get" class="col-md-6 col-sm-6 text-center">
+
             <p>What's the month's name?</p>
-            <select name="month_select" id="month_select">
+            <select name="month_select" id="month_select" v-model="month_select">
                 <option selected disabled>2024</option>
                 <option value="november_2024">november_2024</option>
                 <option value="december_2024">december_2024</option>
                 <option selected disabled>old 2024...</option>
             </select>
             <hr class="my-1">
-            <select name="month_days" id="month_days">
+            <select name="month_days" id="month_days" v-model="month_days">
                 <option selected disabled>number of days</option>
                 <option value="31">31</option>
                 <option value="31">30</option>
@@ -43,9 +58,9 @@ export default {
             <br>
             <small>Select above n days</small>
             <hr>
-        </div>
-        <form action="input_form" method="get" class="col-xl-3 col-lg-4 col-md-12 col-sm-12">
         </form>
+        <button class="btn btn-primary" @click="formSubmit()">submit</button>
+        <p>{{ combinedValues }}</p>
     </div>
 </template>
 
