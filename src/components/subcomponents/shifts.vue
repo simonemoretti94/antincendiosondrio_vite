@@ -53,7 +53,7 @@ export default {
             if (this.selectedMonth && this.selectedMonth.schedule) {
                 this.user = state.userData[2]; // 'simone'
                 console.log('user: ', this.user);
-                console.log('month: ', this.selectedMonth);
+                console.log('month: ', this.selectedMonth.schedule[0]);
             }
         }
     },
@@ -96,11 +96,12 @@ export default {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="">
-                        <td scope="row">R1C1</td>
-                        <td>R1C2</td>
-                        <td>R1C3</td>
-                        <td>R1C3</td>
+                    <tr :class="{ 'bg-light': index % 2 === 0, 'bg-aqua': index % 2 !== 0 }"
+                        v-for="(shift, index) in this.selectedMonth.schedule">
+                        <td scope="row">{{ index + 1 }}</td>
+                        <td>{{ shift.dayShift[0] }} | {{ shift.dayShift[1] }}</td>
+                        <td>{{ shift.nightShift[0] }} | {{ shift.nightShift[1] }}</td>
+                        <td>N/A</td>
                     </tr>
                 </tbody>
             </table>
@@ -112,5 +113,9 @@ export default {
 <style scoped>
 img#loaded_img {
     width: 100%;
+}
+
+.bg-aqua {
+    background-color: #cfe2ff;
 }
 </style>
