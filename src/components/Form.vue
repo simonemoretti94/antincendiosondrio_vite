@@ -32,9 +32,38 @@ export default {
                 setTimeout(() => {
                     this.monthInfoContainer = false;
                 }, 3000);
+                //this.createMonth();
             }
             else {
                 console.log('some value is empty!');
+            }
+        },
+        createMonth() {
+            const monthName = this.month_select;
+            const days = parseInt(this.month_days, 10);
+
+            // Controlla se il mese esiste già
+            const existingMonth = state.calendar.find(month => month.month === monthName);
+
+            if (!existingMonth) {
+                // Crea un nuovo mese con il numero di giorni specificato
+                const newMonth = {
+                    month: monthName,
+                    days: days,
+                    schedule: Array.from({ length: days }, (_, index) => ({
+                        day: index + 1,
+                        dayShift: ['', ''],
+                        nightShift: ['', '']
+                    }))
+                };
+
+                // Aggiungi il nuovo mese al calendario
+                state.calendar.push(newMonth);
+
+                console.log('from Form -> createMonth(): ', state.calendar);
+            }
+            else {
+                alert('month: ', this.month_select, ' already exists!');
             }
         },
     },
@@ -81,21 +110,31 @@ export default {
     </div>
 
     <!-- input table -->
-    <div v-if="!this.monthInfoContainer" v-for="(day, index) in this.month_days" :key="index" class="container">
+    <div v-if="!this.monthInfoContainer"
+        v-for="(day, index) in state.calendar.find(month => month.month === month_select)?.schedule || []" :key="index"
+        class="container">
         <div class="col-12 d-flex">
-            <div class="col-6 d-flex flex-column justify-content-center px-1">
-                <p>Day {{ index + 1 }}</p>
-                <input type="text">
-                <small>Name 1</small>
-                <input type="text">
-                <small>Name 2</small>
+            <div class="col-6 d-flex flex-column justify-content-center p-1">
+                <div class="day b-rad-shared">
+                    <p>Day {{ index + 1 }}</p>
+                    <input type="text"
+                        v-model="state.calendar.find(month => month.month === month_select).schedule[index].dayShift[0]">
+                    <small>Name 1</small>
+                    <input type="text"
+                        v-model="state.calendar.find(month => month.month === month_select).schedule[index].dayShift[1]">
+                    <small>Name 2</small>
+                </div>
             </div>
-            <div class="col-6 d-flex flex-column justify-content-center px-1">
-                <p>Night {{ index + 1 }}</p>
-                <input type="text">
-                <small>Name 1</small>
-                <input type="text">
-                <small>Name 2</small>
+            <div class="col-6 d-flex flex-column justify-content-center p-1">
+                <div class="night b-rad-shared">
+                    <p>Night {{ index + 1 }}</p>
+                    <input type="text"
+                        v-model="state.calendar.find(month => month.month === month_select).schedule[index].nightShift[0]">
+                    <small>Name 1</small>
+                    <input type="text"
+                        v-model="state.calendar.find(month => month.month === month_select).schedule[index].nightShift[1]">
+                    <small>Name 2</small>
+                </div>
             </div>
         </div>
         <hr>
@@ -115,5 +154,22 @@ form#input_form {
     & select {
         border-radius: 10px;
     }
+}
+
+.day {
+    background-color: #53852C;
+}
+
+.night {
+    background-color: #E57D36;
+}
+
+.b-rad-shared {
+    border-radius: 6px;
+}
+
+div.day input,
+div.night input {
+    width: 100%;
 }
 </style>
