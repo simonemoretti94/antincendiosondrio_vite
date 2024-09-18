@@ -37,11 +37,17 @@ export default {
 
 <template>
 
-    <loginpage v-if="!state.found"></loginpage>
-    <shifts v-if="state.found"></shifts>
-    <pageform v-if="state.isAdmin"></pageform>
+    <main>
+        <loginpage v-if="!state.found"></loginpage>
+        <shifts v-if="state.shiftsComponent"></shifts>
+        <pageform v-if="state.isAdmin && state.formComponent"></pageform>
+    </main>
 
 
 </template>
 
-<style scoped></style>
+<style scoped>
+main {
+    min-height: calc(100vh - 160px);
+}
+</style>

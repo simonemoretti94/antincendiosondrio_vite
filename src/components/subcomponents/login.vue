@@ -36,6 +36,7 @@ export default {
             state.users.forEach(element => {
                 if (element[0] == username && element[1] == password) {
                     state.found = true;
+                    state.shiftsComponent = true;
                     if (username == 'simone_moretti') {
                         state.isAdmin = true;
                     }

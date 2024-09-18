@@ -10,7 +10,9 @@ export default {
     },
     mounted() {
         setTimeout(() => {
-            document.getElementById('h4_greetings').remove();
+            if (document.getElementById('h4_greetings')) {
+                document.getElementById('h4_greetings').remove();
+            }
         }, 3000);
 
     },
@@ -18,7 +20,7 @@ export default {
 </script>
 
 <template>
-    <div class="ms-1">
+    <div class="ms-2 mt-2">
         <h4 id="h4_greetings">Ciao {{ state.userData[2] }}!</h4>
         <div>
             <select name="shifts" id="shifts_select" class="p-1 rounded-2">

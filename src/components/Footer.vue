@@ -11,28 +11,19 @@ export default {
     },
     data() { //variables, bool, array, objects and so on
 
-        return {}
+        return {
+            state,
+        }
     },
-    methods: { //functions; all kind of manipulations
-
-    },
-    computed: { // computed properties are cached based on their reactive dependencies
-        //return example this.value1 + this.value2;
-
-    },
-    created() { //Run code before DOM's initial rendering
-        return //example this.value1 + this.value2;
-
-    },
-    mounted() { //Run code after DOM's initial rendering
-        /*axios
-        .get('')
-        .then((response) => {
-           console.log(response);
-        } )*/
-    },
-    watch: { //triggers a function whenever a reactive property changes
-
+    methods: {
+        showForm() {
+            state.formComponent = true;
+            state.shiftsComponent = false;
+        },
+        showHome() {
+            state.formComponent = false;
+            state.shiftsComponent = true;
+        }
     },
 }
 </script>
@@ -67,8 +58,11 @@ export default {
                 <div class="col-md-3">
 
                     <ul>
-                        <li>
-                            <a href="#">To Form Page</a>
+                        <li v-if="!state.formComponent && state.found">
+                            <a href="#" @click="showForm">To Form Page</a>
+                        </li>
+                        <li v-if="!state.shiftsComponent && state.found">
+                            <a href="#" @click="showHome">To Shifts Page</a>
                         </li>
                     </ul>
                 </div>

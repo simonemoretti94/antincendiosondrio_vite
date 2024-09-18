@@ -14,9 +14,22 @@ export const state = reactive({
         //['username', 'password', 'realname', 'realsurname'],
     ],
 
+    /**
+     * handles login
+     */
     found: false,
     userData: [],
+
+    /**
+     * handles shifts component
+     */
+    shiftsComponent: false,
+
+    /**
+     * handles form page
+     */
     isAdmin: false,
+    formComponent: false,
 
 
     calendar: [
