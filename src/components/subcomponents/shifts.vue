@@ -26,12 +26,12 @@ export default {
             /**
              * in sviluppo
              */
-            this.imgPath = 'http://localhost:5173/antincendiosondrio_vite/months/' + this.monthImage + '.jpg';
+            //this.imgPath = 'http://localhost:5173/antincendiosondrio_vite/months/' + this.monthImage + '.jpg';
 
             /**
              * in produzione
              */
-            //this.imgPath = 'https://simonemoretti94.github.io/antincendiosondrio_vite/months/' + this.monthImage + '.jpg';
+            this.imgPath = 'https://simonemoretti94.github.io/antincendiosondrio_vite/months/' + this.monthImage + '.jpg';
 
             console.log(this.imgPath, typeof this.imgPath);
         }
