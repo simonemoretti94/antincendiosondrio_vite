@@ -35,7 +35,13 @@ export default {
             /**
              * in produzione
              */
-            this.imgPath = 'https://simonemoretti94.github.io/antincendiosondrio_vite/months/' + this.monthImage + '.jpg';
+            //this.imgPath = 'https://simonemoretti94.github.io/antincendiosondrio_vite/months/' + this.monthImage + '.jpg';
+
+            /**
+             * from external assets
+             */
+            this.imgPath = 'https://raw.githubusercontent.com/simonemoretti94/assets.io/main/assets/antincendiosondrio/img/shifts/' + this.monthImage + '.jpg?raw=true';
+            //https://raw.githubusercontent.com/simonemoretti94/assets.io/main/assets/antincendiosondrio/img/shifts/october_2024.jpg
 
             console.log(this.imgPath, typeof this.imgPath);
 
