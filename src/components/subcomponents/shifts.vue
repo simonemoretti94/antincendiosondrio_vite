@@ -152,6 +152,15 @@ export default {
                 </tbody>
             </table>
         </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-3" :class="{ 'd-none': !shift.psShift[0] }"
+                    v-for="(shift, index) in this.selectedMonth.schedule">
+                    <span>{{ index + 1 }} - </span>
+                    <span v-html="cellOutput(shift.psShift[0])"></span>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
