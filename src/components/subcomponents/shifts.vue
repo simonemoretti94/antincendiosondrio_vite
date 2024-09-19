@@ -43,7 +43,7 @@ export default {
             this.imgPath = 'https://raw.githubusercontent.com/simonemoretti94/assets.io/main/assets/antincendiosondrio/img/shifts/' + this.monthImage + '.jpg?raw=true';
             //https://raw.githubusercontent.com/simonemoretti94/assets.io/main/assets/antincendiosondrio/img/shifts/october_2024.jpg
 
-            console.log(this.imgPath, typeof this.imgPath);
+            //console.log(this.imgPath, typeof this.imgPath);
 
 
             /**
@@ -52,8 +52,8 @@ export default {
             this.selectedMonth = state.calendar.find(element => element.month === this.monthImage);
             if (this.selectedMonth && this.selectedMonth.schedule) {
                 this.user = state.userData[2]; // 'simone'
-                console.log('user: ', this.user);
-                console.log('month: ', this.selectedMonth.schedule[0]);
+                //console.log('user: ', this.user);
+                //console.log('month: ', this.selectedMonth.schedule[0]);
             }
         },
         nameSwitcher(name) {
@@ -156,6 +156,8 @@ img#loaded_img {
 .table-responsive {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    max-height: 350px;
+    overflow-y: scroll;
 }
 
 table {

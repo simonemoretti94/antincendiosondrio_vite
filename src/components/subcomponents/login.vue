@@ -10,7 +10,7 @@ export default {
     },
 
     mounted() {
-        console.log(state.users);
+        //console.log(state.users);
 
         document.getElementById('login_form').addEventListener('submit', function (event) {
             event.preventDefault(); // Previene l'invio del modulol
@@ -42,7 +42,7 @@ export default {
                     }
                     state.userData.push(element[2]);
                     state.userData.push(element[3]);
-                    console.log(state.userData);
+                    //console.log(state.userData);
                     //console.log('element: ', element[0], ' user: ', username, ' real name: ', userData[2], ' surname: ', userData[3]);
                 }
             });
