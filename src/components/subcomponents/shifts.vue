@@ -55,7 +55,34 @@ export default {
                 console.log('user: ', this.user);
                 console.log('month: ', this.selectedMonth.schedule[0]);
             }
-        }
+        },
+        nameSwitcher(name) {
+            if (name == 'rosarios') { return 'scerra' }
+            else if (name == 'rosariob') { return "buttice'" }
+            else { return name };
+        },
+        cellOutput(name) {
+            let tempName = '';
+
+            if (name == state.userData[2]) {
+                if (name == 'rosarios') { tempName = 'scerra' }
+                else if (name == 'rosariob') { tempName = "buttice'" }
+                else { tempName = name };
+
+                tempName = '<b><u>' + tempName + '</u></b>';
+                //tempName = '<u>' + tempName + '</u>';
+                //console.log('tempname: ', tempName);
+                return tempName;
+            }
+            else {
+                if (name == 'rosarios') { tempName = 'scerra' }
+                else if (name == 'rosariob') { tempName = "buttice'" }
+                else { tempName = name };
+
+                //console.log('name: ', tempName);
+                return tempName;
+            }
+        },
     },
     watch: {
         monthImage(newValue, oldValue) {
@@ -67,7 +94,7 @@ export default {
 
 <template>
     <div class="ms-2 mt-2">
-        <h4 id="h4_greetings">Ciao {{ state.userData[2] }}!</h4>
+        <h4 id="h4_greetings">Ciao <span class="text-capitalize">{{ nameSwitcher(state.userData[2]) }}</span>!</h4>
         <div>
             <select name="shifts" id="shifts_select" class="p-1 rounded-2" v-model="this.monthImage">
                 <option selected disabled>2024</option>
@@ -100,12 +127,16 @@ export default {
                         v-for="(shift, index) in this.selectedMonth.schedule">
                         <td scope="row">{{ index + 1 }}</td>
                         <td>
-                            <div class="day"><span>{{ shift.dayShift[0] }}</span><span>{{ shift.dayShift[1] }}</span>
+                            <div class="day">
+                                <span v-html="cellOutput(shift.dayShift[0])"></span>
+                                <span v-html="cellOutput(shift.dayShift[1])"></span>
                             </div>
                         </td>
                         <td>
-                            <div class="night"><span>{{ shift.nightShift[0] }}</span><span>{{ shift.nightShift[1]
-                                    }}</span></div>
+                            <div class="night">
+                                <span v-html="cellOutput(shift.nightShift[0])"></span>
+                                <span v-html="cellOutput(shift.nightShift[1])"></span>
+                            </div>
                         </td>
                         <td :class="{ 'ps': shift.psShift[0] }">
                             <span>{{ shift.psShift[0] ? shift.psShift[0] : '-' }}</span>
