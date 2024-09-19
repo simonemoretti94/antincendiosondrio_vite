@@ -152,11 +152,12 @@ export default {
                 </tbody>
             </table>
         </div>
-        <div class="container">
-            <div class="row">
+        <div class="container-fluid">
+            <p id="p-ps" class="text-center mb-0">Turni ps</p>
+            <div class="row ps-row">
                 <div class="col-3" :class="{ 'd-none': !shift.psShift[0] }"
                     v-for="(shift, index) in this.selectedMonth.schedule">
-                    <span>{{ index + 1 }} - </span>
+                    <b>{{ index + 1 }} - </b>
                     <span v-html="cellOutput(shift.psShift[0])"></span>
                 </div>
             </div>
@@ -331,6 +332,43 @@ td div {
 
     @media screen and (max-width: 576px) {
         width: 100%;
+    }
+}
+
+
+
+p#p-ps {
+    display: none;
+
+    @media screen and (max-width: 576px) {
+        display: block;
+    }
+}
+
+.ps-row {
+    & div {
+        display: none;
+        background-color: #fbec99;
+
+        border: solid .5px rgb(174, 174, 174);
+
+        & b,
+        span {
+            font-size: small;
+
+            @media screen and (max-width: 500px) {
+                font-size: x-small;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            display: flex;
+            justify-content: center;
+        }
+
+        @media screen and (max-width: 500px) {
+            padding: auto 0;
+        }
     }
 }
 </style>
