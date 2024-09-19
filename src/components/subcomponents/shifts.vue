@@ -119,7 +119,7 @@ export default {
     </div>
     <div v-if="this.selectedMonth">
         <div class="table-responsive w-100">
-            <table class="table table-primary text-center">
+            <table class="table table-primary text-center mb-0">
                 <thead>
                     <tr>
                         <th scope="col">Day</th>
