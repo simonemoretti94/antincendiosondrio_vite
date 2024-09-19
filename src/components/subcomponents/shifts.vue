@@ -11,6 +11,9 @@ export default {
             monthImage: '',
             imgPath: '',
 
+            //handles closing img
+            closeBtn: false,
+
             // handles table
             selectedMonth: null,
             user: '',
@@ -27,6 +30,7 @@ export default {
     },
     methods: {
         loadImage() {
+            this.selectedMonth = null;
             /**
              * in sviluppo
              */
@@ -86,7 +90,9 @@ export default {
     },
     watch: {
         monthImage(newValue, oldValue) {
-            this.loadImage();
+            if (newValue != null) {
+                this.loadImage();
+            }
         }
     },
 }
@@ -109,8 +115,9 @@ export default {
     </div>
     <div v-if="this.monthImage" id="month_image" class="container my-2">
         <img id="loaded_img" :src="this.imgPath" :alt="monthImage">
+        <span @click="this.monthImage = null, this.closeBtn = true">Chiudi <i class="fa fa-solid fa-close"></i></span>
     </div>
-    <div v-if="this.monthImage">
+    <div v-if="this.selectedMonth">
         <div class="table-responsive w-100">
             <table class="table table-primary text-center">
                 <thead>
@@ -151,6 +158,41 @@ export default {
 <style scoped>
 img#loaded_img {
     width: 100%;
+    position: relative
+}
+
+img#loaded_img+span {
+    position: absolute;
+    right: 10px;
+    top: 110px;
+    cursor: pointer;
+
+    color: red;
+    font-size: medium;
+    font-weight: 600;
+
+    background-color: white;
+    border: solid 1px black;
+    border-radius: 10px;
+    box-shadow: -1px -1.5px black;
+
+    padding: .1rem .25rem;
+
+
+    @media screen and (max-width: 450px) {
+        top: 100px;
+    }
+
+    @media screen and (max-width: 350px) {
+        top: 105px;
+        font-size: small;
+    }
+}
+
+img#loaded_img+span:hover {
+    transform: scale(.9);
+    color: white;
+    background-color: red;
 }
 
 .table-responsive {
