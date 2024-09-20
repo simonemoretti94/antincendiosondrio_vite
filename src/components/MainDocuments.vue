@@ -15,28 +15,12 @@ export default {
 
         return {
             state,
+
+            //day and night hours cumulator
+            dayHours: 0,
+            nightHours: 0,
         }
     },
-    //methods: {
-    /*downloadPDF() {
-        const doc = new jsPDF();
-        const img = new Image();
-        img.src = 'https://raw.githubusercontent.com/simonemoretti94/assets.io/main/assets/antincendiosondrio/img/logo/table_logo.png';
-        //img.src = '/icons/table_logo.png';
-        img.onload = function () {
-            doc.addImage(img, 'PNG', 10, 30, 30, 20); // Regola le coordinate e le dimensioni secondo necessità
-            autoTable(doc, {
-                html: 'table',
-                startY: 40, // Imposta la posizione di inizio della tabella sotto l'immagine
-                headStyles: {
-                    fillColor: [255, 255, 255], // Colore di sfondo dell'intestazione
-                    textColor: [0, 0, 0], // Colore del testo dell'intestazione
-                    fontStyle: 'bold' // Stile del testo dell'intestazione
-                }
-            });
-            doc.save('tabella.pdf');
-        };
-    },*/
     methods: {
         downloadPDF(name, surname, month) {
             const doc = new jsPDF();
@@ -63,8 +47,27 @@ export default {
                 doc.save(fileName);
             };
         }
-    }
+    },
+    mounted() {
+        state.workedCalendar.forEach(element => {
+            //console.log(element.schedule);
+            element.schedule.forEach((day, index) => {
+                //console.log(day);
+                if (day.dayShift.includes(state.userData[2])) {
+                    this.dayHours += 12;
+                    //console.log(this.dayHours);
+                }
+                else if (day.nightShift.includes(state.userData[2])) {
+                    this.nightHours += 12;
+                    //console.log(this.nightHours);
+                }
+                else {
+                    console.log('day ', index + 1, ' is without ', state.userData[2]);
+                }
+            });
 
+        });
+    },
 }
 </script>
 
@@ -123,9 +126,10 @@ export default {
                     <tr>
                         <td colspan="4" class="border-lr"></td>
                         <td colspan="1" class="text-center border-lr"><b>Sommano:</b></td>
-                        <td colspan="1" class="border-lr"></td>
-                        <td colspan="1" class="border-lr"></td>
-                        <td colspan="2" class="text-left border-lr"><b>TOTALE ORE = </b></td>
+                        <td colspan="1" class="text-center border-lr">{{ this.dayHours }}</td>
+                        <td colspan="1" class="text-center border-lr">{{ this.nightHours }}</td>
+                        <td colspan="2" class="text-left border-lr"><b>TOTALE ORE = </b>{{ this.dayHours +
+                            this.nightHours }}</td>
                     </tr>
                     <tr>
                         <td colspan="9" style="height: 80px;">NOTE:</td>
