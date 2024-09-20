@@ -21,6 +21,8 @@ export default {
         }
     },
     mounted() {
+        //console.log(state.workedCalendar[0].schedule);
+        //console.log(state.workedCalendar[0].schedule[0]);
         setTimeout(() => {
             if (document.getElementById('h4_greetings')) {
                 document.getElementById('h4_greetings').remove();
