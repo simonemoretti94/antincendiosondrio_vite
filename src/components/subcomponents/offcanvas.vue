@@ -27,7 +27,7 @@ export default {
         </div>
         <div class="offcanvas-body">
             <hr>
-            <p><a href="./../../../worked.html" class="text-decoration-none">Ore lavorate</a></p>
+            <p>Ore lavorate</p>
             <hr>
             <p>Documenti autocompilati</p>
         </div>
