@@ -1,15 +1,18 @@
 <script>
 import { state } from '/state.js';
 import appHeader from './components/Header.vue';
+import offcanvas from './components/subcomponents/offcanvas.vue';
 import appFooter from './components/Footer.vue';
-import appMain from './components/Main.vue';
+import appMainIndex from './components/MainIndex.vue';
+import appMainDocuments from './components/MainDocuments.vue';
 
 export default {
   name: '*',
   //emits: [''],
   components: { //imported components 
     appHeader,
-    appMain,
+    offcanvas,
+    appMainIndex,
     appFooter,
 
   },
@@ -43,7 +46,8 @@ export default {
 
 <template>
   <appHeader></appHeader>
-  <appMain></appMain>
+  <offcanvas></offcanvas>
+  <appMainIndex></appMainIndex>
   <appFooter></appFooter>
 </template>
 

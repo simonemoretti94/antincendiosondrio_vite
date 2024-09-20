@@ -23,6 +23,12 @@ export const state = reactive({
     workedCalendar,
 
     /**
+     * Main components handler
+     */
+    mainIndex: true,
+    mainDocuments: false,
+
+    /**
      * handles login
      */
     found: false,
