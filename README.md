@@ -121,3 +121,66 @@ Esegui lo script
 Ogni volta che vuoi aggiornare il branch gh-pages con le modifiche dal branch main, esegui il seguente comando:
 
 ./deploy.sh
+
+
+
+
+
+
+--------------------------
+
+####Aggiungendo la tabella
+
+npm install jspdf jspdf-autotable
+
+
+<template>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>Giorno</th>
+          <th>Entrata Mattina</th>
+          <th>Uscita Mattina</th>
+          <th>Entrata Pomeriggio</th>
+          <th>Uscita Pomeriggio</th>
+          <th>Totale Ore</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(record, index) in records" :key="index">
+          <td>{{ record.giorno }}</td>
+          <td>{{ record.entrataMattina }}</td>
+          <td>{{ record.uscitaMattina }}</td>
+          <td>{{ record.entrataPomeriggio }}</td>
+          <td>{{ record.uscitaPomeriggio }}</td>
+          <td>{{ record.totaleOre }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <button @click="downloadPDF">Scarica PDF</button>
+  </div>
+</template>
+
+<script>
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
+
+export default {
+  data() {
+    return {
+      records: [
+        { giorno: 1, entrataMattina: '8:00', uscitaMattina: '12:00', entrataPomeriggio: '13:00', uscitaPomeriggio: '17:00', totaleOre: '8:00' },
+        // Aggiungi altri record qui
+      ]
+    };
+  },
+  methods: {
+    downloadPDF() {
+      const doc = new jsPDF();
+      autoTable(doc, { html: 'table' });
+      doc.save('tabella.pdf');
+    }
+  }
+};
+</script>
