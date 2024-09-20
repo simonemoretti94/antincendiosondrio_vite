@@ -72,12 +72,25 @@ export default {
             });
 
         });
+
+        const h4Hide = document.getElementById('h4-rotate-move');
+        const smallHide = document.getElementById('small-hide');
+        setTimeout(() => {
+            h4Hide.remove();
+        }, 10000);
+        setTimeout(() => {
+            smallHide.remove();
+        }, 15000);
     },
 }
 </script>
 
 <template>
     <div class="container-fluid media-700">
+        <h4 id="h4-rotate-move" class="my-1">Ruota il telefono <i class="fa fa-solid fa-rotate-left"></i> oppure scorri
+            <i class="fa fa-solid fa-left-right"></i>
+        </h4>
+        <small id="small-hide">A piè di pagina troverai il pulsante per il download in formato .pdf</small>
         <div class="table-responsive my-2">
 
             <table class="table">
