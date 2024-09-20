@@ -103,8 +103,8 @@ export default {
                         <td>{{ record.nightShift.includes(state.userData[2]) ? '8:00' : '' }}</td>
                         <td>{{ record.dayShift.includes(state.userData[2]) ? 12 : '' }}</td>
                         <td>{{ record.nightShift.includes(state.userData[2]) ? 12 : '' }}</td>
-                        <td>luogo</td>
-                        <td>note</td>
+                        <td></td>
+                        <td></td>
                     </tr>
                 </tbody>
             </table>

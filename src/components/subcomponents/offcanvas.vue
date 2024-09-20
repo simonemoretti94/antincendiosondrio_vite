@@ -8,29 +8,49 @@ export default {
             state,
         }
     },
+    methods: {
+        handleClick() {
+            state.mainDocuments = true;
+            state.mainIndex = false;
+            let offcanvasElement = this.$refs.offcanvas;
+            let bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasElement);
+            bsOffcanvas.hide();
+        }
+    }
 }
 
 </script>
 
 <template>
-    <small type="button" data-bs-toggle="offcanvas" data-bs-target="#Id1" aria-controls="Id1">
-        Fogli ore
-    </small>
+    <div>
+        <small type="button" data-bs-toggle="offcanvas" data-bs-target="#Id1" aria-controls="Id1">
+            Fogli ore
+        </small>
 
-    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="Id1"
-        aria-labelledby="Enable both scrolling & backdrop">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="Enable both scrolling & backdrop">
-                Azioni consigliate
-            </h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <p v-if="!state.mainDocuments" @click="state.mainDocuments = true, state.mainIndex = false">Ore lavorate</p>
-            <p>Documenti autocompilati</p>
+        <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="Id1"
+            aria-labelledby="Enable both scrolling & backdrop" ref="offcanvas">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="Enable both scrolling & backdrop">
+                    Azioni consigliate
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div v-if="!state.mainDocuments">
+                    <p @click="handleClick">Documenti autocompilati</p>
+                    <hr>
+                </div>
+                <div>
+                    <p>Ore lavorate</p>
+                </div>
+                <div v-if="state.mainDocuments">
+                    <hr>
+                    <p style="color: red;">Pagina principale</p>
+                    <hr>
+                </div>
+            </div>
         </div>
     </div>
-
 </template>
 
 <style scoped>
