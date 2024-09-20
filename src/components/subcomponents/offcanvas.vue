@@ -9,9 +9,21 @@ export default {
         }
     },
     methods: {
-        handleClick() {
+        // offCanvasHide(){
+        //     let offcanvasElement = this.$refs.offcanvas;
+        //     let bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasElement);
+        //     bsOffcanvas.hide();
+        // },
+        handleDocuments() {
             state.mainDocuments = true;
             state.mainIndex = false;
+            let offcanvasElement = this.$refs.offcanvas;
+            let bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasElement);
+            bsOffcanvas.hide();
+        },
+        handleShifts() {
+            state.mainDocuments = false;
+            state.mainIndex = true;
             let offcanvasElement = this.$refs.offcanvas;
             let bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasElement);
             bsOffcanvas.hide();
@@ -37,7 +49,7 @@ export default {
             </div>
             <div class="offcanvas-body">
                 <div v-if="!state.mainDocuments">
-                    <p @click="handleClick">Documenti autocompilati</p>
+                    <p @click="handleDocuments">Documenti autocompilati</p>
                     <hr>
                 </div>
                 <div>
@@ -45,7 +57,7 @@ export default {
                 </div>
                 <div v-if="state.mainDocuments">
                     <hr>
-                    <p style="color: red;">Pagina principale</p>
+                    <p @click="handleShifts" style="color: red;">Pagina principale</p>
                     <hr>
                 </div>
             </div>
