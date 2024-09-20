@@ -29,14 +29,19 @@ export default {
             img.onload = function () {
                 autoTable(doc, {
                     html: 'table',
-                    startY: 40,
+                    startY: 5,
+                    margin: { top: 5 },
+                    styles: {
+                        fontSize: 8,
+                        cellPadding: 2
+                    },
                     headStyles: {
                         fillColor: [255, 255, 255],
                         textColor: [0, 0, 0],
                         fontStyle: 'bold'
                     }
                 });
-                doc.addImage(img, 'PNG', 15, 40, 32, 10); // x , y, width , height
+                doc.addImage(img, 'PNG', 15, 5, 32, 10); // x , y, width , height
 
                 //console.log(state.workedCalendar[0].month, typeof state.workedCalendar[0].month);
                 //console.log(name, surname, month);
