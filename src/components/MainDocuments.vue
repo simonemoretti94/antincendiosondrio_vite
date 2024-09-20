@@ -53,6 +53,8 @@ export default {
             // });
         },*/
         loadMonth() {
+            this.dayHours = 0;
+            this.nightHours = 0;
             this.tempMonth = state.workedCalendar.find(element => element.month === this.monthSelected);
             if (this.tempMonth && this.tempMonth.schedule) {
                 console.log(this.tempMonth, this.tempMonth.schedule);
@@ -176,8 +178,7 @@ export default {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="text-center" v-for="(record, index) in state.workedCalendar[0].schedule"
-                            :key="index">
+                        <tr class="text-center" v-for="(record, index) in tempMonth.schedule" :key="index">
                             <td class="border-lr">{{ record.day }}</td>
                             <td class="border-lr">{{ record.dayShift.includes(state.userData[2]) ? '8:00' : '' }}</td>
                             <td class="border-lr">{{ record.dayShift.includes(state.userData[2]) ? '20:00' : '' }}</td>
