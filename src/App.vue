@@ -13,12 +13,15 @@ export default {
     appHeader,
     offcanvas,
     appMainIndex,
+    appMainDocuments,
     appFooter,
 
   },
   data() { //variables, bool, array, objects and so on
 
-    return {}
+    return {
+      state,
+    }
   },
   methods: { //functions; all kind of manipulations
 
@@ -46,8 +49,9 @@ export default {
 
 <template>
   <appHeader></appHeader>
-  <offcanvas></offcanvas>
-  <appMainIndex></appMainIndex>
+  <offcanvas v-if="state.found"></offcanvas>
+  <appMainIndex v-if="state.mainIndex && !state.mainDocuments"></appMainIndex>
+  <appMainDocuments v-if="state.mainDocuments && !state.mainIndex"></appMainDocuments>
   <appFooter></appFooter>
 </template>
 
