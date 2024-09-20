@@ -102,7 +102,7 @@ export const calendar = [
             { day: 21, dayShift: ['fabio', 'alessandro'], nightShift: ['carlo', 'rosariob'], psShift: [''], },
             { day: 22, dayShift: ['emmanuele', 'alessandro'], nightShift: ['fabio', 'rosariob'], psShift: [''], },
             { day: 23, dayShift: ['simone', 'carlo'], nightShift: ['emmanuele', 'rosarios'], psShift: [''], },
-            { day: 24, dayShift: ['carlo', 'rosariob'], nightShift: ['simone', 'rosarios'], psShift: ['scoperto'], },
+            { day: 24, dayShift: ['carlo', 'rosariob'], nightShift: ['simone', 'rosarios'], psShift: ['rosarios'], },
             { day: 25, dayShift: ['fabio', 'rosariob'], nightShift: ['carlo', 'rosarios'], psShift: [''], },
             { day: 26, dayShift: ['emmanuele', 'rosariob'], nightShift: ['carlo', 'rosarios'], psShift: [''], },
             { day: 27, dayShift: ['simone', 'rosariob'], nightShift: ['emmanuele', 'rosarios'], psShift: [''], },
