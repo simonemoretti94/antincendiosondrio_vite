@@ -1,5 +1,6 @@
 import { reactive } from 'vue';
 import { calendar } from './shifts';
+import { workedCalendar } from './shifts';
 
 export const state = reactive({
 
@@ -19,6 +20,7 @@ export const state = reactive({
      * declared shifts
      */
     calendar,
+    workedCalendar,
 
     /**
      * handles login

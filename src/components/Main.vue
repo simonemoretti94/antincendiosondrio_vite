@@ -3,6 +3,7 @@ import { state } from '/state.js';
 import loginpage from './subcomponents/login.vue';
 import shifts from './subcomponents/shifts.vue';
 import pageform from './Form.vue';
+import offcanvas from './subcomponents/offcanvas.vue';
 
 export default {
     name: 'appMain',
@@ -11,6 +12,7 @@ export default {
         loginpage,
         shifts,
         pageform,
+        offcanvas,
 
     },
     data() { //variables, bool, array, objects and so on
@@ -38,6 +40,7 @@ export default {
 <template>
 
     <main>
+        <offcanvas></offcanvas>
         <loginpage v-if="!state.found"></loginpage>
         <shifts v-if="state.shiftsComponent"></shifts>
         <pageform v-if="state.isAdmin && state.formComponent"></pageform>
