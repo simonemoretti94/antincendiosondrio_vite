@@ -105,12 +105,13 @@ export default {
         <h4 id="h4_greetings">Ciao <span class="text-capitalize">{{ nameSwitcher(state.userData[2]) }}</span>!</h4>
         <div>
             <small class="ps-1 d-block">Mese:</small>
-            <select name="shifts" id="shifts_select" class="p-1 rounded-2" v-model="this.monthImage">
+            <select name="shifts" id="shifts_select" class="p-1 rounded-2 text-capitalize" v-model="this.monthImage">
                 <option selected disabled>2024</option>
-                <option value="october_2024">Ottobre</option>
+                <option v-for="(element, index) in state.calendar" :value="element.month">{{ element.ita }}</option>
+                <!-- <option value="october_2024">Ottobre</option>
                 <option value="september_2024">Settembre</option>
                 <option value="august_2024">Agosto</option>
-                <option disabled>old 2024...</option>
+                <option disabled>old 2024...</option> -->
             </select>
             <br>
         </div>
