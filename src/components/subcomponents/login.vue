@@ -42,6 +42,7 @@ export default {
                     }
                     state.userData.push(element[2]);
                     state.userData.push(element[3]);
+                    state.userData.push(element[4]);
                     //console.log(state.userData);
                     //console.log('element: ', element[0], ' user: ', username, ' real name: ', userData[2], ' surname: ', userData[3]);
                 }

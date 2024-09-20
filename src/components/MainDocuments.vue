@@ -33,11 +33,7 @@ export default {
 
     },
     mounted() { //Run code after DOM's initial rendering
-        /*axios
-        .get('')
-        .then((response) => {
-           console.log(response);
-        } )*/
+        console.log(state.userData[4]);
     },
     watch: { //triggers a function whenever a reactive property changes
 
@@ -105,8 +101,8 @@ export default {
                         <td>{{ record.dayShift.includes(state.userData[2]) ? '20:00' : '' }}</td>
                         <td>{{ record.nightShift.includes(state.userData[2]) ? '20:00' : '' }}</td>
                         <td>{{ record.nightShift.includes(state.userData[2]) ? '8:00' : '' }}</td>
-                        <td>diurno</td>
-                        <td>notturno</td>
+                        <td>{{ record.dayShift.includes(state.userData[2]) ? 12 : '' }}</td>
+                        <td>{{ record.nightShift.includes(state.userData[2]) ? 12 : '' }}</td>
                         <td>luogo</td>
                         <td>note</td>
                     </tr>
