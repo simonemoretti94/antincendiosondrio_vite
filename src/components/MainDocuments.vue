@@ -46,8 +46,20 @@ export default {
         <div class="table-responsive my-2">
 
             <table class="table table-primary">
-                <thead class="text-center">
+                <thead>
                     <tr>
+                        <th colspan="3"><img id="table-logo" src="/public/icons/logo.jpg" alt="logo"></th>
+                        <th colspan="5" class="text-center text-uppercase">riepilogo ore individuali
+                            mensili<br>antincendio</th>
+                        <th colspan="1"><small>mese/anno:<br><b>{{ state.workedCalendar[0].ita }}</b></small></th>
+                    </tr>
+                    <tr class="text-left">
+                        <th colspan="4"><small>nome e cognome operatore:<br><i class="text-capitalize">{{
+                            state.userData[4] }}</i></small></th>
+                        <th colspan="5"><small>indirizzo luogo di lavoro:<br><i>Ospedale di Sondrio via Stelvio 25,
+                                    23100 Sondrio</i></small></th>
+                    </tr>
+                    <tr class="text-center">
                         <th colspan="1"></th>
                         <th colspan="2">servizio diurno</th>
                         <th colspan="2">servizio notturno</th>
@@ -56,7 +68,7 @@ export default {
                         <th colspan="1"></th>
                         <th colspan="1"></th>
                     </tr>
-                    <tr>
+                    <tr class="text-center">
                         <th>Giorno</th>
                         <th>entrata</th>
                         <th>uscita</th>
@@ -89,4 +101,9 @@ export default {
 
 </template>
 
-<style scoped></style>
+<style scoped>
+img#table-logo {
+    width: 60px;
+    aspect-ratio: 1 / 1;
+}
+</style>
