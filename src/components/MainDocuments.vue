@@ -131,6 +131,9 @@ export default {
         <option selected disabled>2024</option>
         <option v-for="(element, index) in state.workedCalendar" :value="element.month">{{ element.ita }}</option>
     </select>
+    <div id="page-filler" v-if="!this.tempMonth">
+        <h1 class="text-center">Hi, I'm filling the page!<i class="fa fa-solid fa-smile"></i></h1>
+    </div>
     <div v-if="this.tempMonth">
         <h4 v-if="this.h4SmallHide" class="my-1">Ruota il telefono <i class="fa fa-solid fa-rotate-left"></i> oppure
             scorri
@@ -146,7 +149,7 @@ export default {
                             <th colspan="2"><img id="table-logo" src="/public/icons/table_logo.png" alt="logo"></th>
                             <th colspan="6" class="border-lr text-center text-uppercase">riepilogo ore individuali
                                 mensili<br>antincendio</th>
-                            <th colspan="1"><small>mese/anno:<br><b>{{ state.workedCalendar[0].ita }}</b></small></th>
+                            <th colspan="1"><small>mese/anno:<br><b>{{ this.tempMonth.ita }}</b></small></th>
                         </tr>
                         <tr class="text-left">
                             <th colspan="4"><small>nome e cognome operatore:<br><i class="text-capitalize">{{
@@ -215,6 +218,14 @@ export default {
 </template>
 
 <style scoped>
+div#page-filler {
+    min-height: calc(100vh - 150px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
 .media-700 {
     @media screen and (max-width: 700px) {
         overflow-x: scroll;

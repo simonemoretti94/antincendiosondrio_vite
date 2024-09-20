@@ -117,6 +117,9 @@ export default {
         </div>
         <hr>
     </div>
+    <div id="page-filler" v-if="!this.selectedMonth">
+        <h1 class="text-center">Hi, I'm filling the page!<i class="fa fa-solid fa-smile"></i></h1>
+    </div>
     <p class="text-center text-capitalize my-1" v-if="this.selectedMonth && this.closeBtn"><b>{{ this.selectedMonth.ita
             }}</b></p>
     <div v-if="this.monthImage" id="month_image" class="container my-2">
@@ -173,6 +176,14 @@ export default {
 </template>
 
 <style scoped>
+div#page-filler {
+    min-height: calc(100vh - 230px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
 img#loaded_img {
     width: 100%;
     position: relative
