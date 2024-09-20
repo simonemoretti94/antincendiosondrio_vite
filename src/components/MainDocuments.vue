@@ -45,11 +45,11 @@ export default {
     <div class="container-fluid">
         <div class="table-responsive my-2">
 
-            <table class="table table-primary">
+            <table class="table">
                 <thead>
                     <tr>
-                        <th colspan="3"><img id="table-logo" src="/public/icons/logo.jpg" alt="logo"></th>
-                        <th colspan="5" class="text-center text-uppercase">riepilogo ore individuali
+                        <th colspan="2"><img id="table-logo" src="/public/icons/table_logo.png" alt="logo"></th>
+                        <th colspan="6" class="text-center text-uppercase">riepilogo ore individuali
                             mensili<br>antincendio</th>
                         <th colspan="1"><small>mese/anno:<br><b>{{ state.workedCalendar[0].ita }}</b></small></th>
                     </tr>
@@ -103,7 +103,7 @@ export default {
 
 <style scoped>
 img#table-logo {
-    width: 60px;
-    aspect-ratio: 1 / 1;
+    max-width: 150px;
+    max-height: 60px;
 }
 </style>
