@@ -38,7 +38,7 @@ export default {
         };
     },*/
     methods: {
-        downloadPDF() {
+        downloadPDF(name, surname, month) {
             const doc = new jsPDF();
             const img = new Image();
             img.src = 'https://raw.githubusercontent.com/simonemoretti94/assets.io/main/assets/antincendiosondrio/img/logo/table_logo.png';
@@ -53,7 +53,14 @@ export default {
                     }
                 });
                 doc.addImage(img, 'PNG', 15, 40, 32, 10); // x , y, width , height
-                doc.save('tabella.pdf');
+
+                //console.log(state.workedCalendar[0].month, typeof state.workedCalendar[0].month);
+                //console.log(name, surname, month);
+                //console.log(fileName);
+                //const fileName = 'riepilogo_ore_' + name + '_' + surname + '_' + month;
+
+                const fileName = 'riepilogo_ore_' + name + '_' + surname;
+                doc.save(fileName);
             };
         }
     }
@@ -62,7 +69,7 @@ export default {
 </script>
 
 <template>
-    <div class="container-fluid">
+    <div class="container-fluid media-700">
         <div class="table-responsive my-2">
 
             <table class="table">
@@ -113,9 +120,21 @@ export default {
                         <td class="border-lr"></td>
                         <td class="border-lr"></td>
                     </tr>
+                    <tr>
+                        <td colspan="4" class="border-lr"></td>
+                        <td colspan="1" class="text-center border-lr"><b>Sommano:</b></td>
+                        <td colspan="1" class="border-lr"></td>
+                        <td colspan="1" class="border-lr"></td>
+                        <td colspan="2" class="text-left border-lr"><b>TOTALE ORE = </b></td>
+                    </tr>
+                    <tr>
+                        <td colspan="9" style="height: 80px;">NOTE:</td>
+                    </tr>
                 </tbody>
             </table>
-            <button class="btn btn-primary" @click="downloadPDF">Scarica PDF</button>
+            <button class="btn btn-primary"
+                @click="downloadPDF(state.userData[2], state.userData[3]), state.workedCalendar[0].month">Scarica
+                PDF</button>
         </div>
     </div>
 
@@ -123,6 +142,12 @@ export default {
 </template>
 
 <style scoped>
+.media-700 {
+    @media screen and (max-width: 700px) {
+        overflow-x: scroll;
+    }
+}
+
 table {
     border: solid 1px black;
 }
