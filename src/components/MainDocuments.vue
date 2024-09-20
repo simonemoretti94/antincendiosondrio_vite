@@ -47,7 +47,7 @@ export default {
 
 <template>
     <h1>hi from main documents!</h1>
-    <div class="container-fluid">
+    <!-- <div class="container-fluid">
         <table>
             <thead>
                 <tr>
@@ -71,7 +71,52 @@ export default {
             </tbody>
         </table>
         <button @click="downloadPDF">Scarica PDF</button>
+    </div> -->
+    <div class="container-fluid">
+        <div class="table-responsive">
+
+            <table class="table table-primary">
+                <thead class="text-center">
+                    <tr>
+                        <th colspan="1"></th>
+                        <th colspan="2">servizio diurno</th>
+                        <th colspan="2">servizio notturno</th>
+                        <th colspan="1"></th>
+                        <th colspan="1"></th>
+                        <th colspan="1"></th>
+                        <th colspan="1"></th>
+                    </tr>
+                    <tr>
+                        <th>Giorno</th>
+                        <th>entrata</th>
+                        <th>uscita</th>
+                        <th>entrata</th>
+                        <th>uscita</th>
+                        <th>totale ore<br>diurno</th>
+                        <th>totale ore<br>notturno</th>
+                        <th>luogo</th>
+                        <th>note</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text-center" v-for="(record, index) in state.workedCalendar[0].schedule" :key="index">
+                        <td>{{ record.day }}</td>
+                        <td>{{ record.dayShift.includes(state.userData[2]) ? '8:00' : '' }}</td>
+                        <td>{{ record.dayShift.includes(state.userData[2]) ? '20:00' : '' }}</td>
+                        <td>{{ record.nightShift.includes(state.userData[2]) ? '20:00' : '' }}</td>
+                        <td>{{ record.nightShift.includes(state.userData[2]) ? '8:00' : '' }}</td>
+                        <td>diurno</td>
+                        <td>notturno</td>
+                        <td>luogo</td>
+                        <td>note</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button @click="downloadPDF">Scarica PDF</button>
+        </div>
     </div>
+
+
 </template>
 
 <style scoped></style>
