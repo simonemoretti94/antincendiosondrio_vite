@@ -107,7 +107,7 @@ export default {
                 <option selected disabled>2024</option>
                 <option value="october_2024">Ottobre</option>
                 <option value="september_2024">Settembre</option>
-                <!-- <option value="august_2024">Agosto</option> -->
+                <option value="august_2024">Agosto</option>
                 <option disabled>old 2024...</option>
             </select>
             <br>
