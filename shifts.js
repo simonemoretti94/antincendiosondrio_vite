@@ -140,7 +140,7 @@ export const workedCalendar = [
             { day: 18, dayShift: ['simone', 'fabio'], nightShift: ['emmanuele', 'carlo'], psShift: [''], },
             { day: 19, dayShift: ['rosariob', 'sortino'], nightShift: ['emmanuele', 'carlo'], psShift: [''], },
             { day: 20, dayShift: ['simone', 'rosarios'], nightShift: ['emmanuele', 'rosariob'], psShift: [''], },
-            /*{ day: 21, dayShift: ['carlo', 'rosarios'], nightShift: ['nome3', 'nome4'], psShift: [''], },
+            { day: 21, dayShift: ['carlo', 'rosarios'], nightShift: ['nome3', 'nome4'], psShift: [''], },
             { day: 22, dayShift: ['nome1', 'nome2'], nightShift: ['nome3', 'nome4'], psShift: [''], },
             { day: 23, dayShift: ['nome1', 'nome2'], nightShift: ['nome3', 'nome4'], psShift: [''], },
             { day: 24, dayShift: ['nome1', 'nome2'], nightShift: ['nome3', 'nome4'], psShift: [''], },
@@ -150,7 +150,7 @@ export const workedCalendar = [
             { day: 28, dayShift: ['nome1', 'nome2'], nightShift: ['nome3', 'nome4'], psShift: [''], },
             { day: 29, dayShift: ['nome1', 'nome2'], nightShift: ['nome3', 'nome4'], psShift: [''], },
             { day: 30, dayShift: ['nome1', 'nome2'], nightShift: ['nome3', 'nome4'], psShift: [''], },
-            { day: 31, dayShift: ['nome1', 'nome2'], nightShift: ['nome3', 'nome4'], psShift: [''], },*/
+            { day: 31, dayShift: ['nome1', 'nome2'], nightShift: ['nome3', 'nome4'], psShift: [''], },
         ]
     },
 ];
