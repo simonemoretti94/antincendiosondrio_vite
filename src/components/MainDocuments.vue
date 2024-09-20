@@ -17,27 +17,47 @@ export default {
             state,
         }
     },
+    //methods: {
+    /*downloadPDF() {
+        const doc = new jsPDF();
+        const img = new Image();
+        img.src = 'https://raw.githubusercontent.com/simonemoretti94/assets.io/main/assets/antincendiosondrio/img/logo/table_logo.png';
+        //img.src = '/icons/table_logo.png';
+        img.onload = function () {
+            doc.addImage(img, 'PNG', 10, 30, 30, 20); // Regola le coordinate e le dimensioni secondo necessità
+            autoTable(doc, {
+                html: 'table',
+                startY: 40, // Imposta la posizione di inizio della tabella sotto l'immagine
+                headStyles: {
+                    fillColor: [255, 255, 255], // Colore di sfondo dell'intestazione
+                    textColor: [0, 0, 0], // Colore del testo dell'intestazione
+                    fontStyle: 'bold' // Stile del testo dell'intestazione
+                }
+            });
+            doc.save('tabella.pdf');
+        };
+    },*/
     methods: {
         downloadPDF() {
             const doc = new jsPDF();
-            autoTable(doc, { html: 'table' });
-            doc.save('tabella.pdf');
+            const img = new Image();
+            img.src = 'https://raw.githubusercontent.com/simonemoretti94/assets.io/main/assets/antincendiosondrio/img/logo/table_logo.png';
+            img.onload = function () {
+                autoTable(doc, {
+                    html: 'table',
+                    startY: 40,
+                    headStyles: {
+                        fillColor: [255, 255, 255],
+                        textColor: [0, 0, 0],
+                        fontStyle: 'bold'
+                    }
+                });
+                doc.addImage(img, 'PNG', 15, 40, 32, 10); // x , y, width , height
+                doc.save('tabella.pdf');
+            };
         }
-    },
-    computed: { // computed properties are cached based on their reactive dependencies
-        //return example this.value1 + this.value2;
+    }
 
-    },
-    created() { //Run code before DOM's initial rendering
-        //return //example this.value1 + this.value2;
-
-    },
-    mounted() { //Run code after DOM's initial rendering
-        console.log(state.userData[4]);
-    },
-    watch: { //triggers a function whenever a reactive property changes
-
-    },
 }
 </script>
 
@@ -102,6 +122,10 @@ export default {
 </template>
 
 <style scoped>
+table {
+    border: solid 1px black;
+}
+
 img#table-logo {
     max-width: 150px;
     max-height: 60px;

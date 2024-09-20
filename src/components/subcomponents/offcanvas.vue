@@ -66,6 +66,10 @@ export default {
 </template>
 
 <style scoped>
+p:hover {
+    cursor: pointer;
+}
+
 small {
     color: red;
     text-decoration: underline;
