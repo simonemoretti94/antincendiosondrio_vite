@@ -34,6 +34,7 @@ export const state = reactive({
     calendar: [
         {
             month: 'october_2024',
+            ita: 'ottobre 2024',
             days: 31,
             schedule: [
                 { day: 1, dayShift: ['emmanuele', 'alessandro'], nightShift: ['fabio', 'rosarios'], psShift: [''], },
@@ -71,6 +72,7 @@ export const state = reactive({
         },
         {
             month: 'september_2024',
+            ita: 'settembre 2024',
             days: 30,
             schedule: [
                 { day: 1, dayShift: ['simone', 'alessandro'], nightShift: ['carlo', 'rosarios'], psShift: [''], },

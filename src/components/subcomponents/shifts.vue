@@ -102,21 +102,25 @@ export default {
     <div class="ms-2 mt-2">
         <h4 id="h4_greetings">Ciao <span class="text-capitalize">{{ nameSwitcher(state.userData[2]) }}</span>!</h4>
         <div>
+            <small class="ps-1 d-block">Mese:</small>
             <select name="shifts" id="shifts_select" class="p-1 rounded-2" v-model="this.monthImage">
                 <option selected disabled>2024</option>
                 <option value="october_2024">Ottobre</option>
                 <option value="september_2024">Settembre</option>
-                <option value="august_2024">Agosto</option>
+                <!-- <option value="august_2024">Agosto</option> -->
                 <option disabled>old 2024...</option>
             </select>
             <br>
-            <small class="ps-1">Seleziona un mese</small>
         </div>
+        <hr>
     </div>
+    <p class="text-center text-capitalize my-1" v-if="this.selectedMonth && this.closeBtn"><b>{{ this.selectedMonth.ita
+            }}</b></p>
     <div v-if="this.monthImage" id="month_image" class="container my-2">
         <img id="loaded_img" :src="this.imgPath" :alt="monthImage">
         <span @click="this.monthImage = null, this.closeBtn = true">Chiudi <i class="fa fa-solid fa-close"></i></span>
     </div>
+    <hr>
     <div v-if="this.selectedMonth">
         <div class="table-responsive w-100">
             <table class="table table-primary text-center mb-0">
@@ -208,7 +212,7 @@ img#loaded_img+span:hover {
 .table-responsive {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    max-height: 350px;
+    max-height: 500px;
     overflow-y: scroll;
 }
 
