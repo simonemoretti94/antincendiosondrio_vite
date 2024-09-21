@@ -45,7 +45,6 @@ export const state = reactive({
     isAdmin: false,
     formComponent: false,
 
-
     // calendar: [
     //     {
     //         month: 'october_2024',

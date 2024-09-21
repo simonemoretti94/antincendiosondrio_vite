@@ -17,9 +17,14 @@ export default {
             // select handlers
             chosenMonth: '',
             chosenUser: '',
+
         }
     },
     methods: {
+        updateTable(user) {
+            // Logica per aggiornare il componente apptable
+            this.$refs.appTable.updateTable(user);
+        }
     },
     computed: { // computed properties are cached based on their reactive dependencies
         //return example this.value1 + this.value2;
@@ -28,7 +33,8 @@ export default {
     watch: {
         chosenUser(oldVal, newVal) {
             console.log(oldVal, newVal);
-        }
+            //this.updateTable(this.chosenUser);
+        },
     },
 }
 </script>
@@ -70,7 +76,9 @@ export default {
                         {{ month.month }} worked hour papers
 
                         <div v-if="this.chosenUser">
-                            <apptable :user="this.chosenUser" :month="month"></apptable>
+                            <apptable ref="appTable" :times="state.workedCalendar.length" :user="this.chosenUser"
+                                :month="month">
+                            </apptable>
                         </div>
                     </div>
                 </div>

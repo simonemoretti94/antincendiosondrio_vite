@@ -14,21 +14,26 @@ export default {
             dayHours: 0,
             nightHours: 0,
             psHours: 0,
+
+            //loop variable
+            loopTimes: 0,
         }
     },
     props: {
         user: String,
         month: Object,
+        times: Number,
     },
     methods: {
 
         loadMonth() {
+
             this.dayHours = 0;
             this.nightHours = 0;
             this.psHours = 0;
 
             if (this.month && this.month.schedule) {
-                console.log(this.month, this.month.schedule);
+                //console.log(this.month, this.month.schedule);
                 this.month.schedule.forEach((element, index) => {
                     if (element.dayShift.includes(this.user)) {
                         this.dayHours += 12;
@@ -40,13 +45,22 @@ export default {
                         this.dayHours += 6;
                     }
                     else {
-                        console.log('day ', index + 1, ' is without ', this.user);
+                        //console.log('day ', index + 1, ' is without ', this.user);
                     }
                 });
             } else {
                 console.log('No schedule found for the selected month');
             }
 
+
+            /*this.loopTimes -= 1;
+            if (!this.loopTimes) {
+                this.user = '';
+                this.month = null;
+                this.dayHours = 0;
+                this.nightHours = 0;
+                this.psHours = 0;
+            }*/
             console.log('day: ', this.dayHours, ' night: ', this.nightHours, ' ps:', this.psHours);
 
         },
@@ -99,9 +113,21 @@ export default {
             }
 
         },
+        nHours(record) {
+            if (record.dayShift.includes(this.user)) {
+                return '12';
+            }
+            else if (record.psShift.includes(this.user)) {
+                return '6';
+            }
+            else {
+                return '';
+            }
+        },
     },
     mounted() {
-        console.log(this.month);
+        this.loopTimes = this.times;
+        console.log('month: ', this.month, ' user: ', this.user, ' times: ', this.loopTimes);
         this.loadMonth();
     },
 }
@@ -156,8 +182,8 @@ export default {
                     <td class="border-lr">{{ record.nightShift.includes(this.user) ? '20:00' : '' }}
                     </td>
                     <td class="border-lr">{{ record.nightShift.includes(this.user) ? '8:00' : '' }}</td>
-                    <td>{{ record.dayShift.includes(this.user) ? 12 : '' }}</td>
-                    <td class="border-lr">{{ record.nightShift.includes(this.user) ? 12 : '' }}</td>
+                    <td>{{ nHours(record) }}</td>
+                    <td class="border-lr">{{ record.nightShift.includes(this.user) ? '12' : '' }}</td>
                     <td class="border-lr"></td>
                     <td class="border-lr"></td>
                 </tr>
