@@ -53,8 +53,8 @@ export default {
 <style scoped>
 header {
   height: 60px;
-  background: linear-gradient(-45deg, grey, white);
-  border-bottom: .3px solid rgb(255, 255, 255);
+  background: linear-gradient(-45deg, grey, white, white);
+  border-bottom: .3px solid rgb(183, 183, 183);
   display: flex;
   align-items: center;
 

@@ -132,7 +132,7 @@ export const workedCalendar = [
             { day: 10, dayShift: ['fabio', 'alessandro'], nightShift: ['carlo', 'rosarios'], psShift: [''], },
             { day: 11, dayShift: ['fabio', 'rosariob'], nightShift: ['emmanuele', 'alessandro'], psShift: [''], },
             { day: 12, dayShift: ['simone', 'rosariob'], nightShift: ['emmanuele', 'alessandro'], psShift: [''], },
-            { day: 13, dayShift: ['carlo', 'rosariob'], nightShift: ['emmauele', 'rosariob'], psShift: [''], },
+            { day: 13, dayShift: ['carlo', 'rosariob'], nightShift: ['emmanuele', 'rosariob'], psShift: [''], },
             { day: 14, dayShift: ['simone', 'fabio'], nightShift: ['carlo', 'margaiotti'], psShift: ['emmanuele'], },
             { day: 15, dayShift: ['fabio', 'rosariob'], nightShift: ['emmanuele', 'margaiotti'], psShift: [''], },
             { day: 16, dayShift: ['simone', 'rosariob'], nightShift: ['emmanuele', 'rosariob'], psShift: [''], },

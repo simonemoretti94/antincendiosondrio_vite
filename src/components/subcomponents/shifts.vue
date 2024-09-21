@@ -108,17 +108,16 @@ export default {
             <select name="shifts" id="shifts_select" class="p-1 rounded-2 text-capitalize" v-model="this.monthImage">
                 <option selected disabled>2024</option>
                 <option v-for="(element, index) in state.calendar" :value="element.month">{{ element.ita }}</option>
-                <!-- <option value="october_2024">Ottobre</option>
-                <option value="september_2024">Settembre</option>
-                <option value="august_2024">Agosto</option>
-                <option disabled>old 2024...</option> -->
+                <option disabled>old 2024...</option>
             </select>
             <br>
         </div>
         <hr>
     </div>
-    <div id="page-filler" v-if="!this.selectedMonth">
-        <h1 class="text-center">Hi, I'm filling the page!<i class="fa fa-solid fa-smile"></i></h1>
+    <div id="page-filler" v-if="!this.selectedMonth" class="bg-secondary">
+        <h3 class="text-center text-white">Utilizza il selettore 'mese' per visionare i turni oppure<br>clicca su 'Fogli
+            ore' per
+            effettuare altre azioni</h3>
     </div>
     <p class="text-center text-capitalize my-1" v-if="this.selectedMonth && this.closeBtn"><b>{{ this.selectedMonth.ita
             }}</b></p>

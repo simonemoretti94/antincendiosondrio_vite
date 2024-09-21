@@ -26,35 +26,15 @@ export default {
             //day and night hours cumulator
             dayHours: 0,
             nightHours: 0,
+            psHours: 0,
         }
     },
     methods: {
-        /*loadMonth() {
-            this.tempMonth = null;
-            this.tempMonth = state.workedCalendar.find(element => element.month === this.monthSelected);
-            console.log(this.tempMonth, this.tempMonth.schedule);
-            this.tempMonth.schedule.forEach(element => {
-                //console.log(element.schedule);
-                //element.forEach((day, index) => {
-                //console.log(day);
-                if (element.dayShift.includes(state.userData[2])) {
-                    this.dayHours += 12;
-                    //console.log(this.dayHours);
-                }
-                else if (element.nightShift.includes(state.userData[2])) {
-                    this.nightHours += 12;
-                    //console.log(this.nightHours);
-                }
-                else {
-                    console.log('day ', index + 1, ' is without ', state.userData[2]);
-                }
-            });
-
-            // });
-        },*/
         loadMonth() {
             this.dayHours = 0;
             this.nightHours = 0;
+            this.psHours = 0;
+
             this.tempMonth = state.workedCalendar.find(element => element.month === this.monthSelected);
             if (this.tempMonth && this.tempMonth.schedule) {
                 console.log(this.tempMonth, this.tempMonth.schedule);
@@ -63,7 +43,11 @@ export default {
                         this.dayHours += 12;
                     } else if (element.nightShift.includes(state.userData[2])) {
                         this.nightHours += 12;
-                    } else {
+                    }
+                    else if (element.psShift.includes(state.userData[2])) {
+                        this.psHours += 6;
+                    }
+                    else {
                         console.log('day ', index + 1, ' is without ', state.userData[2]);
                     }
                 });
@@ -102,7 +86,31 @@ export default {
                 const fileName = 'riepilogo_ore_' + name + '_' + surname;
                 doc.save(fileName);
             };
-        }
+        },
+        dayOrPs(record, inOrOut) {
+            // in = 1, out = 0,
+            const isUser = false;
+            if (record.dayShift.includes(state.userData[2])) {
+                if (inOrOut) {
+                    return '8:00';
+                }
+                else {
+                    return '20:00';
+                }
+            }
+            else if (record.psShift.includes(state.userData[2])) {
+                if (inOrOut) {
+                    return '14:00';
+                }
+                else {
+                    return '20:00';
+                }
+            }
+            else {
+                return '';
+            }
+
+        },
     },
     mounted() {
     },
@@ -126,20 +134,28 @@ export default {
 </script>
 
 <template>
-    <select class="p-1 rounded-2 ms-2 my-1 text-capitalize" name="workedShift" id="workedShift"
-        v-model="this.monthSelected">
-        <option selected disabled>2024</option>
-        <option v-for="(element, index) in state.workedCalendar" :value="element.month">{{ element.ita }}</option>
-    </select>
-    <div id="page-filler" v-if="!this.tempMonth">
-        <h1 class="text-center">Hi, I'm filling the page!<i class="fa fa-solid fa-smile"></i></h1>
+    <div class="ms-2">
+        <small class="d-block">Mese:</small>
+        <select class="p-1 rounded-2 my-1 text-capitalize" name="workedShift" id="workedShift"
+            v-model="this.monthSelected">
+            <option selected disabled>2024</option>
+            <option v-for="(element, index) in state.workedCalendar" :value="element.month">{{ element.ita }}</option>
+        </select>
+    </div>
+    <div id="page-filler" v-if="!this.tempMonth" class="bg-secondary">
+        <h3 class="text-center text-white">Utilizza il selettore 'mese' per accedere alla tabella pre-compilata
+            relativa al
+            mese selezionato oppure clicca su 'Fogli
+            ore' per effettuare altre azioni</h3>
     </div>
     <div v-if="this.tempMonth">
-        <h4 v-if="this.h4SmallHide" class="my-1">Ruota il telefono <i class="fa fa-solid fa-rotate-left"></i> oppure
+        <h4 v-if="this.h4SmallHide" class="ms-2 my-1">Ruota il telefono <i class="fa fa-solid fa-rotate-left"></i>
+            oppure
             scorri
             <i class="fa fa-solid fa-left-right"></i>
         </h4>
-        <small v-if="this.h4SmallHide">A piè di pagina troverai il pulsante per il download in formato .pdf</small>
+        <small v-if="this.h4SmallHide" class="ms-2 my-1">A piè di pagina troverai il pulsante per il download in formato
+            .pdf</small>
         <div class="container-fluid media-700">
             <div class="table-responsive my-2">
 
@@ -183,8 +199,10 @@ export default {
                     <tbody>
                         <tr class="text-center" v-for="(record, index) in tempMonth.schedule" :key="index">
                             <td class="border-lr">{{ record.day }}</td>
-                            <td class="border-lr">{{ record.dayShift.includes(state.userData[2]) ? '8:00' : '' }}</td>
-                            <td class="border-lr">{{ record.dayShift.includes(state.userData[2]) ? '20:00' : '' }}</td>
+                            <td class="border-lr">{{ dayOrPs(record, 1) }}</td>
+                            <td class="border-lr">{{ dayOrPs(record, 0) }}</td>
+                            <!-- <td class="border-lr">{{ record.dayShift.includes(state.userData[2]) ? '8:00' : '' }}</td>
+                            <td class="border-lr">{{ record.dayShift.includes(state.userData[2]) ? '20:00' : '' }}</td> -->
                             <td class="border-lr">{{ record.nightShift.includes(state.userData[2]) ? '20:00' : '' }}
                             </td>
                             <td class="border-lr">{{ record.nightShift.includes(state.userData[2]) ? '8:00' : '' }}</td>
@@ -199,7 +217,7 @@ export default {
                             <td colspan="1" class="text-center border-lr">{{ this.dayHours }}</td>
                             <td colspan="1" class="text-center border-lr">{{ this.nightHours }}</td>
                             <td colspan="2" class="text-left border-lr"><b>TOTALE ORE = </b>{{ this.dayHours +
-                                this.nightHours }}</td>
+                                this.nightHours + this.psHours }}</td>
                         </tr>
                         <tr>
                             <td colspan="9" style="height: 80px;">NOTE:</td>
