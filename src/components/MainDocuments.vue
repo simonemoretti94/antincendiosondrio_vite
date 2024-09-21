@@ -45,7 +45,8 @@ export default {
                         this.nightHours += 12;
                     }
                     else if (element.psShift.includes(state.userData[2])) {
-                        this.psHours += 6;
+                        //this.psHours += 6;
+                        this.dayHours += 6;
                     }
                     else {
                         //console.log('day ', index + 1, ' is without ', state.userData[2]);
@@ -78,11 +79,6 @@ export default {
                 });
                 doc.addImage(img, 'PNG', 15, 5, 32, 10); // x , y, width , height
 
-                //console.log(state.workedCalendar[0].month, typeof state.workedCalendar[0].month);
-                //console.log(name, surname, month);
-                //console.log(fileName);
-                //const fileName = 'riepilogo_ore_' + name + '_' + surname + '_' + month;
-
                 const fileName = 'riepilogo_ore_' + name + '_' + surname;
                 doc.save(fileName);
             };
@@ -110,6 +106,17 @@ export default {
                 return '';
             }
 
+        },
+        nHours(record) {
+            if (record.dayShift.includes(state.userData[2])) {
+                return '12';
+            }
+            else if (record.psShift.includes(state.userData[2])) {
+                return '6';
+            }
+            else {
+                return '';
+            }
         },
     },
     mounted() {
@@ -201,12 +208,10 @@ export default {
                             <td class="border-lr">{{ record.day }}</td>
                             <td class="border-lr">{{ dayOrPs(record, 1) }}</td>
                             <td class="border-lr">{{ dayOrPs(record, 0) }}</td>
-                            <!-- <td class="border-lr">{{ record.dayShift.includes(state.userData[2]) ? '8:00' : '' }}</td>
-                            <td class="border-lr">{{ record.dayShift.includes(state.userData[2]) ? '20:00' : '' }}</td> -->
                             <td class="border-lr">{{ record.nightShift.includes(state.userData[2]) ? '20:00' : '' }}
                             </td>
                             <td class="border-lr">{{ record.nightShift.includes(state.userData[2]) ? '8:00' : '' }}</td>
-                            <td>{{ record.dayShift.includes(state.userData[2]) ? 12 : '' }}</td>
+                            <td>{{ nHours(record) }}</td>
                             <td class="border-lr">{{ record.nightShift.includes(state.userData[2]) ? 12 : '' }}</td>
                             <td class="border-lr"></td>
                             <td class="border-lr"></td>
@@ -217,7 +222,7 @@ export default {
                             <td colspan="1" class="text-center border-lr">{{ this.dayHours }}</td>
                             <td colspan="1" class="text-center border-lr">{{ this.nightHours }}</td>
                             <td colspan="2" class="text-left border-lr"><b>TOTALE ORE = </b>{{ this.dayHours +
-                                this.nightHours + this.psHours }}</td>
+                                this.nightHours }}</td>
                         </tr>
                         <tr>
                             <td colspan="9" style="height: 80px;">NOTE:</td>

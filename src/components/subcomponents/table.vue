@@ -41,7 +41,7 @@ export default {
                         this.nightHours += 12;
                     }
                     else if (element.psShift.includes(this.user)) {
-                        this.psHours += 6;
+                        //this.psHours += 6;
                         this.dayHours += 6;
                     }
                     else {
@@ -52,15 +52,6 @@ export default {
                 console.log('No schedule found for the selected month');
             }
 
-
-            /*this.loopTimes -= 1;
-            if (!this.loopTimes) {
-                this.user = '';
-                this.month = null;
-                this.dayHours = 0;
-                this.nightHours = 0;
-                this.psHours = 0;
-            }*/
             console.log('day: ', this.dayHours, ' night: ', this.nightHours, ' ps:', this.psHours);
 
         },
