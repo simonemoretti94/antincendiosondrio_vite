@@ -70,7 +70,7 @@ export default {
                         {{ month.month }} worked hour papers
 
                         <div v-if="this.chosenUser">
-                            <apptable :user="this.chosenUser"></apptable>
+                            <apptable :user="this.chosenUser" :month="month"></apptable>
                         </div>
                     </div>
                 </div>
