@@ -1,12 +1,12 @@
 <script>
-import { workedCalendar } from '../../shifts';
 import { state } from '/state.js';
+import apptable from './subcomponents/table.vue';
 
 export default {
     name: 'appMainAdminDocuments',
     //emits: [''],
     components: { //imported components 
-        //*,
+        apptable,
 
     },
     data() { //variables, bool, array, objects and so on
@@ -19,21 +19,16 @@ export default {
             chosenUser: '',
         }
     },
-    methods: { //functions; all kind of manipulations
-
+    methods: {
     },
     computed: { // computed properties are cached based on their reactive dependencies
         //return example this.value1 + this.value2;
 
     },
-    mounted() { //Run code after DOM's initial rendering
-        /*axios
-        .get('')
-        .then((response) => {
-           console.log(response);
-        } )*/
-    },
     watch: {
+        chosenUser(oldVal, newVal) {
+            console.log(oldVal, newVal);
+        }
     },
 }
 </script>
@@ -57,6 +52,34 @@ export default {
                 <option selected disabled>Old 2024...</option>
             </select>
         </div>
+    </div>
+
+    <div class="container-fluid">
+        <hr>
+        <div v-for="(month, index) in state.workedCalendar" class="accordion" :id="'accordionExample' + index">
+            <div class="accordion-item">
+                <h2 class="accordion-header" :id="'heading' + index">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        :data-bs-target="'#collapse' + index" aria-expanded="true" :aria-controls="'collapse' + index">
+                        {{ month.month }}
+                    </button>
+                </h2>
+                <div :id="'collapse' + index" class="accordion-collapse collapse show"
+                    :aria-labelledby="'heading' + index" :data-bs-parent="'#accordionExample' + index">
+                    <div class="accordion-body">
+                        {{ month.month }} worked hour papers
+
+                        <div v-if="this.chosenUser">
+                            <apptable :user="this.chosenUser"></apptable>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+        </div>
+
+
     </div>
 </template>
 
