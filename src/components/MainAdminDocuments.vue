@@ -9,15 +9,13 @@ export default {
         apptable,
 
     },
-    data() { //variables, bool, array, objects and so on
-
+    data() {
         return {
             state,
 
             // select handlers
             chosenMonth: '',
             chosenUser: '',
-
         }
     },
     methods: {
@@ -26,14 +24,9 @@ export default {
             this.$refs.appTable.updateTable(user);
         }
     },
-    computed: { // computed properties are cached based on their reactive dependencies
-        //return example this.value1 + this.value2;
-
-    },
     watch: {
         chosenUser(oldVal, newVal) {
             console.log(oldVal, newVal);
-            //this.updateTable(this.chosenUser);
         },
     },
 }
@@ -49,7 +42,7 @@ export default {
                 <option v-for="(user, index) in state.users" :value="user[2]">{{ index + 1 }} - {{ user[4] }}</option>
             </select>
         </div>
-        <div class="col-3 d-flex flex-column justify-content-center align-items-center">
+        <!-- <div class="col-3 d-flex flex-column justify-content-center align-items-center">
             <small class="text-left">Month:</small>
             <select name="selectAdminMonth" id="selectAdmin" v-model="this.chosenMonth" class="p-1 rounded-2 text-left">
                 <option selected disabled>2024</option>
@@ -57,7 +50,12 @@ export default {
                     month.month }}</option>
                 <option selected disabled>Old 2024...</option>
             </select>
-        </div>
+        </div> -->
+    </div>
+
+    <div class="container-fluid mt-2 mb-1">
+        <h6>A causa di problemi di reattività, cambia pagina prima di selezionare un diverso utente, altrimenti verranno
+            forniti al nuovo operatore l'ammontare ore di quello selezionato in precedenza</h6>
     </div>
 
     <div class="container-fluid">

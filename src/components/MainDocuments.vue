@@ -37,7 +37,7 @@ export default {
 
             this.tempMonth = state.workedCalendar.find(element => element.month === this.monthSelected);
             if (this.tempMonth && this.tempMonth.schedule) {
-                console.log(this.tempMonth, this.tempMonth.schedule);
+                //console.log(this.tempMonth, this.tempMonth.schedule);
                 this.tempMonth.schedule.forEach((element, index) => {
                     if (element.dayShift.includes(state.userData[2])) {
                         this.dayHours += 12;
@@ -48,7 +48,7 @@ export default {
                         this.psHours += 6;
                     }
                     else {
-                        console.log('day ', index + 1, ' is without ', state.userData[2]);
+                        //console.log('day ', index + 1, ' is without ', state.userData[2]);
                     }
                 });
             } else {
