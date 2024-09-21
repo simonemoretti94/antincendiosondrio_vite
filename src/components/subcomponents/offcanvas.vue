@@ -27,6 +27,13 @@ export default {
             let offcanvasElement = this.$refs.offcanvas;
             let bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasElement);
             bsOffcanvas.hide();
+        },
+        handleShiftsAdmin() {
+            state.mainDocuments = false;
+            state.mainIndex = false;
+            let offcanvasElement = this.$refs.offcanvas;
+            let bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasElement);
+            bsOffcanvas.hide();
         }
     }
 }
@@ -54,10 +61,14 @@ export default {
                 </div>
                 <div>
                     <p>Ore lavorate</p>
+                    <hr>
                 </div>
                 <div v-if="state.mainDocuments">
-                    <hr>
                     <p @click="handleShifts" style="color: red;">Pagina principale</p>
+                    <hr>
+                </div>
+                <div v-if="state.isAdmin">
+                    <p @click="handleShiftsAdmin" style="color: red;">Fogli ore operatori</p>
                     <hr>
                 </div>
             </div>
