@@ -172,6 +172,12 @@ export default {
             </div>
         </div>
     </div>
+    <hr>
+    <div class="container-fluid mt-2">
+        <iframe
+            src="https://www.3bmeteo.com/moduli_esterni/localita_7_giorni_compatto/6976/050505/d4d4d4/543dff/ffffff/it"
+            class="w-100" height=192 frameborder="0"></iframe><br />
+    </div>
 </template>
 
 <style scoped>
