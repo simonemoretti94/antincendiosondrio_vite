@@ -29,6 +29,12 @@ export default {
             }
         }, 3000);
 
+        setTimeout(() => {
+            if (document.getElementById('h3-temporary')) {
+                document.getElementById('h3-temporary').remove();
+            }
+        }, 10000);
+
     },
     methods: {
         loadImage() {
@@ -103,6 +109,9 @@ export default {
 <template>
     <div class="ms-2 mt-2">
         <h4 id="h4_greetings">Ciao <span class="text-capitalize">{{ nameSwitcher(state.userData[2]) }}</span>!</h4>
+        <h3 id="h3-temporary" class="text-danger">A causa di variazioni relative al mese di ottobre avvenute in data
+            22/09/2024, i turni di ottobre presentati non sono più attendibili. Verranno aggiornati in data 24/09/2024
+        </h3>
         <div>
             <small class="ps-1 d-block">Mese:</small>
             <select name="shifts" id="shifts_select" class="p-1 rounded-2 text-capitalize" v-model="this.monthImage">
