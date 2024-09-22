@@ -42,7 +42,7 @@ export default {
 
                     <ul>
                         <li>
-                            <a href="#">About page</a>
+                            <a>About page</a>
                         </li>
                     </ul>
                 </div>
@@ -50,7 +50,7 @@ export default {
                 <div class="col-md-3 col-sm-12">
                     <ul>
                         <li>
-                            <a href="">Developer contacts</a>
+                            <a>Developer contacts</a>
                         </li>
                     </ul>
                 </div>
@@ -59,10 +59,11 @@ export default {
 
                     <ul>
                         <li v-if="!state.formComponent && state.found">
-                            <a href="#" @click="showForm">To Form Page</a>
+                            <!-- <a @click="showForm">To Form Page</a> -->
+                            <a>To Form Page</a>
                         </li>
                         <li v-if="!state.shiftsComponent && state.found && state.isAdmin">
-                            <a href="#" @click="showHome">To Shifts Page</a>
+                            <a @click="showHome">To Shifts Page</a>
                         </li>
                     </ul>
                 </div>
@@ -73,10 +74,10 @@ export default {
                     <p>Email: <a href="mailto:simone.moretti.944@gmail.com">simone moretti</a></p>
                     <!-- <p>Call-Us <a href="tel:044-4547896321">044-4547896321</a></p> -->
                     <h1 class="socialM">Social Media</h1>
-                    <a href="https://www.facebook.com"><i class="fab fa-facebook-square fa-3x"></i></a>
-                    <a href="https://www.facebook.com"><i class="fab fa-instagram-square fa-3x"></i></a>
-                    <a href="https://www.facebook.com"><i class="fab fa-twitter-square fa-3x"></i></a>
-                    <a href="https://www.facebook.com"><i class="fab fa-pinterest-square fa-3x"></i></a>
+                    <a><i class="fab fa-facebook-square fa-3x"></i></a>
+                    <a><i class="fab fa-instagram-square fa-3x"></i></a>
+                    <a><i class="fab fa-twitter-square fa-3x"></i></a>
+                    <a><i class="fab fa-pinterest-square fa-3x"></i></a>
                 </div>
             </div>
         </div>
