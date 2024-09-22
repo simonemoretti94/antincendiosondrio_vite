@@ -70,7 +70,7 @@ export default {
 
                 <div class="col-md-3">
                     <h1 class="contactus">Contact Me</h1>
-                    <p>Email: <a href="mailto:simone.moretti.944@gmil.com">simone moretti</a></p>
+                    <p>Email: <a href="mailto:simone.moretti.944@gmail.com">simone moretti</a></p>
                     <!-- <p>Call-Us <a href="tel:044-4547896321">044-4547896321</a></p> -->
                     <h1 class="socialM">Social Media</h1>
                     <a href="https://www.facebook.com"><i class="fab fa-facebook-square fa-3x"></i></a>
