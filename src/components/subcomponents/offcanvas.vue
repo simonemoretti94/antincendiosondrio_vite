@@ -63,7 +63,7 @@ export default {
                     <p>Ore lavorate</p>
                     <hr>
                 </div>
-                <div v-if="state.mainDocuments">
+                <div v-if="!state.mainIndex">
                     <p @click="handleShifts" style="color: red;">Pagina principale</p>
                     <hr>
                 </div>
