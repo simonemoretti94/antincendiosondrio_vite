@@ -61,7 +61,9 @@ export default {
         downloadPDF(name, surname, month) {
             const doc = new jsPDF();
             const img = new Image();
-            img.src = 'https://raw.githubusercontent.com/simonemoretti94/assets.io/main/assets/antincendiosondrio/img/logo/table_logo.png';
+            //img.src = 'https://raw.githubusercontent.com/simonemoretti94/assets.io/main/assets/antincendiosondrio/img/logo/table_logo.png';
+            img.src = '/antincendiosondrio_vite/icons/table_logo.png';
+
             img.onload = function () {
                 autoTable(doc, {
                     html: 'table',
@@ -81,6 +83,9 @@ export default {
 
                 const fileName = 'riepilogo_ore_' + name + '_' + surname;
                 doc.save(fileName);
+            };
+            img.onerror = function () {
+                console.error('Failed to load image');
             };
         },
         dayOrPs(record, inOrOut) {
