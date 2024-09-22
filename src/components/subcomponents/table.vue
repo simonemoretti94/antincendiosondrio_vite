@@ -21,6 +21,7 @@ export default {
     },
     props: {
         user: String,
+        userObj: Object,
         month: Object,
         times: Number,
     },
@@ -52,13 +53,14 @@ export default {
                 console.log('No schedule found for the selected month');
             }
 
-            console.log('day: ', this.dayHours, ' night: ', this.nightHours, ' ps:', this.psHours);
+            //console.log('day: ', this.dayHours, ' night: ', this.nightHours, ' ps:', this.psHours);
 
         },
         downloadPDF(name, surname, month) {
             const doc = new jsPDF();
             const img = new Image();
-            img.src = 'https://raw.githubusercontent.com/simonemoretti94/assets.io/main/assets/antincendiosondrio/img/logo/table_logo.png';
+            //img.src = 'https://raw.githubusercontent.com/simonemoretti94/assets.io/main/assets/antincendiosondrio/img/logo/table_logo.png';
+            img.src = '/antincendiosondrio_vite/icons/table_logo.png';
             img.onload = function () {
                 autoTable(doc, {
                     html: 'table',
@@ -118,14 +120,15 @@ export default {
     },
     mounted() {
         this.loopTimes = this.times;
-        console.log('month: ', this.month, ' user: ', this.user, ' times: ', this.loopTimes);
+        //console.log('month: ', this.month, ' user: ', this.user, ' times: ', this.loopTimes);
         this.loadMonth();
     },
 }
 </script>
 
 <template>
-    <h2>{{ this.user }}</h2>
+    <!-- <h2 class="text-capitalize">{{ this.userObj[4] }}</h2>
+    <hr class="my-1"> -->
     <div class="table-responsive my-2">
 
         <table class="table">
@@ -138,7 +141,7 @@ export default {
                 </tr>
                 <tr class="text-left">
                     <th colspan="4"><small>nome e cognome operatore:<br><i class="text-capitalize">{{
-                        this.user }}</i></small></th>
+                        this.userObj[4] }}</i></small></th>
                     <th colspan="5" class="border-lr"><small>indirizzo luogo di lavoro:<br><i>Ospedale di
                                 Sondrio
                                 via Stelvio 25,

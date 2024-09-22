@@ -59,7 +59,7 @@ export default {
                     <p @click="handleDocuments">Documenti autocompilati</p>
                     <hr>
                 </div>
-                <div>
+                <div class="d-none">
                     <p>Ore lavorate</p>
                     <hr>
                 </div>

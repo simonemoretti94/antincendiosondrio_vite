@@ -16,17 +16,28 @@ export default {
             // select handlers
             chosenMonth: '',
             chosenUser: '',
+
+            // user object
+            userObj: null,
         }
     },
     methods: {
         updateTable(user) {
             // Logica per aggiornare il componente apptable
             this.$refs.appTable.updateTable(user);
-        }
+        },
+        findUser(user) {
+            state.users.forEach(element => {
+                if (element[2] == user) {
+                    this.userObj = element;
+                }
+            });
+        },
     },
     watch: {
         chosenUser(oldVal, newVal) {
-            console.log(oldVal, newVal);
+            //console.log(oldVal, newVal);
+            this.findUser(this.chosenUser);
         },
     },
 }
@@ -42,18 +53,9 @@ export default {
                 <option v-for="(user, index) in state.users" :value="user[2]">{{ index + 1 }} - {{ user[4] }}</option>
             </select>
         </div>
-        <!-- <div class="col-3 d-flex flex-column justify-content-center align-items-center">
-            <small class="text-left">Month:</small>
-            <select name="selectAdminMonth" id="selectAdmin" v-model="this.chosenMonth" class="p-1 rounded-2 text-left">
-                <option selected disabled>2024</option>
-                <option v-for="(month, index) in state.workedCalendar" :value="month.month">{{ index + 1 }} - {{
-                    month.month }}</option>
-                <option selected disabled>Old 2024...</option>
-            </select>
-        </div> -->
     </div>
 
-    <div class="container-fluid mt-2 mb-1">
+    <div class="container-fluid ms-2 mt-2 mb-1">
         <h6>A causa di problemi di reattività, cambia pagina prima di selezionare un diverso utente, altrimenti verranno
             forniti al nuovo operatore l'ammontare ore di quello selezionato in precedenza</h6>
     </div>
@@ -71,11 +73,11 @@ export default {
                 <div :id="'collapse' + index" class="accordion-collapse collapse show"
                     :aria-labelledby="'heading' + index" :data-bs-parent="'#accordionExample' + index">
                     <div class="accordion-body">
-                        {{ month.month }} worked hour papers
+                        <!-- {{ month.month }} worked hour papers -->
 
                         <div v-if="this.chosenUser">
                             <apptable ref="appTable" :times="state.workedCalendar.length" :user="this.chosenUser"
-                                :month="month">
+                                :month="month" :userObj="this.userObj">
                             </apptable>
                         </div>
                     </div>
