@@ -115,7 +115,7 @@ export default {
         <hr>
     </div>
     <div id="page-filler" v-if="!this.selectedMonth" class="bg-secondary">
-        <h3 class="text-center text-white">Utilizza il selettore 'mese' per visionare i turni oppure<br>clicca su 'Fogli
+        <h3 class="text-center text-white">Utilizza il selettore 'Mese' per visionare i turni oppure<br>clicca su 'Fogli
             ore' per
             effettuare altre azioni</h3>
     </div>

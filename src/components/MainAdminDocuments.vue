@@ -45,8 +45,8 @@ export default {
 
 <template>
     <div class="ms-2 my-2 d-flex justify-content-start">
-        <div class="col-3 d-flex flex-column justify-content-between align-items-center ">
-            <small class="text-left">User:</small>
+        <div class="col-3">
+            <small class="d-block text-left">User:</small>
             <select name="selectAdminUser" id="selectAdmin" v-model="this.chosenUser"
                 class="p-1 rounded-2 text-left text-capitalize">
                 <option selected disabled>Select a user</option>

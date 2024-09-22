@@ -78,7 +78,7 @@ export default {
                 });
                 doc.addImage(img, 'PNG', 15, 5, 32, 10); // x , y, width , height
 
-                const fileName = 'riepilogo_ore_' + name + '_' + surname;
+                const fileName = 'riepilogo_ore_' + name + '_' + surname + '_' + month;
                 doc.save(fileName);
             };
         },
@@ -194,7 +194,7 @@ export default {
                 </tr>
             </tbody>
         </table>
-        <button class="btn btn-primary" @click="downloadPDF(this.user, 'admin', this.month.month)">Scarica
+        <button class="btn btn-primary" @click="downloadPDF(this.userObj[2], this.userObj[3], this.month.month)">Scarica
             PDF</button>
     </div>
 

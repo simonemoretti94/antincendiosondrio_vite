@@ -155,7 +155,7 @@ export default {
         </select>
     </div>
     <div id="page-filler" v-if="!this.tempMonth" class="bg-secondary">
-        <h3 class="text-center text-white">Utilizza il selettore 'mese' per accedere alla tabella pre-compilata
+        <h3 class="text-center text-white">Utilizza il selettore 'Mese' per accedere alla tabella pre-compilata
             relativa al
             mese selezionato oppure clicca su 'Fogli
             ore' per effettuare altre azioni</h3>
