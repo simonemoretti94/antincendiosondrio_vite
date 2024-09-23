@@ -21,19 +21,17 @@ export default {
         }
     },
     mounted() {
-        //console.log(state.workedCalendar[0].schedule);
-        //console.log(state.workedCalendar[0].schedule[0]);
         setTimeout(() => {
             if (document.getElementById('h4_greetings')) {
                 document.getElementById('h4_greetings').remove();
             }
         }, 3000);
 
-        setTimeout(() => {
-            if (document.getElementById('h3-temporary')) {
-                document.getElementById('h3-temporary').remove();
-            }
-        }, 10000);
+        // setTimeout(() => {
+        //     if (document.getElementById('h3-temporary')) {
+        //         document.getElementById('h3-temporary').remove();
+        //     }
+        // }, 10000);
 
     },
     methods: {
@@ -64,8 +62,6 @@ export default {
             this.selectedMonth = state.calendar.find(element => element.month === this.monthImage);
             if (this.selectedMonth && this.selectedMonth.schedule) {
                 this.user = state.userData[2]; // 'simone'
-                //console.log('user: ', this.user);
-                //console.log('month: ', this.selectedMonth.schedule[0]);
             }
         },
         nameSwitcher(name) {
@@ -82,8 +78,6 @@ export default {
                 else { tempName = name };
 
                 tempName = '<b><u>' + tempName + '</u></b>';
-                //tempName = '<u>' + tempName + '</u>';
-                //console.log('tempname: ', tempName);
                 return tempName;
             }
             else {
@@ -109,9 +103,9 @@ export default {
 <template>
     <div class="ms-2 mt-2">
         <h4 id="h4_greetings">Ciao <span class="text-capitalize">{{ nameSwitcher(state.userData[2]) }}</span>!</h4>
-        <h3 id="h3-temporary" class="text-danger">A causa di variazioni relative al mese di ottobre avvenute in data
+        <!-- <h3 id="h3-temporary" class="text-danger">A causa di variazioni relative al mese di ottobre avvenute in data
             22/09/2024, i turni di ottobre presentati non sono più attendibili. Verranno aggiornati in data 24/09/2024
-        </h3>
+        </h3> -->
         <div>
             <small class="ps-1 d-block">Mese:</small>
             <select name="shifts" id="shifts_select" class="p-1 rounded-2 text-capitalize" v-model="this.monthImage">
@@ -170,7 +164,7 @@ export default {
                 </tbody>
             </table>
         </div>
-        <div class="container-fluid">
+        <div id="iframe-container">
             <p id="p-ps" class="text-center mb-0">Turni ps</p>
             <div class="row ps-row">
                 <div class="col-3" :class="{ 'd-none': !shift.psShift[0] }"
@@ -182,10 +176,11 @@ export default {
         </div>
     </div>
     <hr>
-    <div class="container-fluid mt-2">
-        <iframe
+    <div id="iframe-container" class="container-fluid mt-2">
+        <div id="overlay"></div>
+        <iframe id="iframe"
             src="https://www.3bmeteo.com/moduli_esterni/localita_7_giorni_compatto/6976/050505/d4d4d4/543dff/ffffff/it"
-            class="w-100" height=192 frameborder="0"></iframe><br />
+            class="w-100" height=192 frameborder="0"></iframe>
     </div>
 </template>
 
@@ -402,5 +397,17 @@ p#p-ps {
             padding: auto 0;
         }
     }
+}
+
+div#iframe-container {
+    position: relative;
+}
+
+div#iframe-container>div#overlay {
+    min-height: 192px;
+    width: 100%;
+    top: 0px;
+    background-color: rgba(255, 255, 255, 0);
+    position: absolute;
 }
 </style>
