@@ -122,7 +122,7 @@ export default {
             </select>
             <br>
             <span @click="weatherToggle()" v-if="!state.openWeather" class="position-absolute"
-                style="top: 0; right: -5px;"><i class="fa-solid fa-cloud-sun"
+                style="top: -20px; right: -5px;"><i class="fa-solid fa-cloud-sun"
                     style="background-color: blue; color: white; padding: .25rem; border-radius: 5px;"></i></span>
             <div id="weather" v-if="state.openWeather">
                 <weather></weather>
@@ -431,6 +431,7 @@ div#iframe-container>div#overlay {
 div#weather {
     position: absolute;
     top: 0;
+    z-index: 1;
 
     width: 99%;
     height: 400px;
@@ -448,6 +449,7 @@ div#weather {
 div#weather+span {
     position: absolute;
     top: 0;
+    z-index: 1;
 
     >i {
         font-size: x-large;
