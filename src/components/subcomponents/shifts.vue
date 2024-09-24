@@ -93,6 +93,9 @@ export default {
                 return tempName;
             }
         },
+        weatherToggle() {
+            state.openWeather = !state.openWeather;
+        }
     },
     watch: {
         monthImage(newValue, oldValue) {
@@ -110,7 +113,7 @@ export default {
         <!-- <h3 id="h3-temporary" class="text-danger">A causa di variazioni relative al mese di ottobre avvenute in data
             22/09/2024, i turni di ottobre presentati non sono più attendibili. Verranno aggiornati in data 24/09/2024
         </h3> -->
-        <div>
+        <div class="position-relative">
             <small class="ps-1 d-block">Mese:</small>
             <select name="shifts" id="shifts_select" class="p-1 rounded-2 text-capitalize" v-model="this.monthImage">
                 <option selected disabled>2024</option>
@@ -118,6 +121,13 @@ export default {
                 <option disabled>old 2024...</option>
             </select>
             <br>
+            <span @click="weatherToggle()" v-if="!state.openWeather" class="position-absolute"
+                style="top: 0; right: -5px;"><i class="fa-solid fa-cloud-sun"
+                    style="background-color: blue; color: white; padding: .25rem; border-radius: 5px;"></i></span>
+            <div id="weather" v-if="state.openWeather">
+                <weather></weather>
+            </div>
+            <span @click="weatherToggle()" v-if="state.openWeather"><i class="fa fa-solid fa-close"></i></span>
         </div>
         <hr>
     </div>
@@ -180,14 +190,14 @@ export default {
         </div>
     </div>
     <hr>
-    <div id="iframe-container" class="container-fluid mt-2">
+    <!-- <div id="iframe-container" class="container-fluid mt-2">
         <div id="overlay"></div>
         <iframe id="iframe"
             src="https://www.3bmeteo.com/moduli_esterni/localita_7_giorni_compatto/6976/050505/d4d4d4/543dff/ffffff/it"
             class="w-100" height=192 frameborder="0"></iframe>
-    </div>
+    </div> -->
 
-    <weather></weather>
+    <!-- <weather></weather> -->
 
 </template>
 
@@ -416,5 +426,42 @@ div#iframe-container>div#overlay {
     top: 0px;
     background-color: rgba(255, 255, 255, 0);
     position: absolute;
+}
+
+div#weather {
+    position: absolute;
+    top: 0;
+
+    width: 99%;
+    height: 400px;
+
+    margin: auto auto;
+    overflow-y: scroll;
+
+    border: solid .1px black;
+    border-radius: 5px;
+
+    box-shadow: 0 0 2px white;
+    filter: drop-shadow(0 0 6px black);
+}
+
+div#weather+span {
+    position: absolute;
+    top: 0;
+
+    >i {
+        font-size: x-large;
+        margin: .5rem 0 0 .5rem;
+        padding: .25rem .5rem;
+        background-color: white;
+        border-radius: 6px;
+        color: #3C3C3C;
+    }
+
+    >i:hover {
+        color: white;
+        background-color: blue;
+        padding: .25rem .5rem;
+    }
 }
 </style>

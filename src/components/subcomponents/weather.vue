@@ -22,50 +22,52 @@ export default {
     },
     methods: {
         imgCode(weatherCode) {
+            let baseUrl = '/antincendiosondrio_vite/weather/day/';
+
             if (weatherCode == 0) {
-                return '/weather/day/clear.webp';
+                return baseUrl + 'clear.webp';
             }
             else if (weatherCode == 1 || weatherCode == 2 || weatherCode == 3) {
-                return '/weather/day/mid_cloudy.webp'
+                return baseUrl + 'mid_cloudy.webp'
             }
             else if (weatherCode == 45 || weatherCode == 48) {
-                return '/weather/day/cloudy.webp'
+                return baseUrl + 'cloudy.webp'
             }
             else if (weatherCode == 51 || weatherCode == 53 || weatherCode == 55) {
-                return '/weather/day/very_cloudy.webp'
+                return baseUrl + 'very_cloudy.webp'
             }
             else if (weatherCode == 56 || weatherCode == 57) {
-                return '/weather/day/very_cloudy.webp'
+                return baseUrl + 'very_cloudy.webp'
             }
             else if (weatherCode == 61 || weatherCode == 63 || weatherCode == 65) {
-                return '/weather/day/possible_rain.webp'
+                return baseUrl + 'possible_rain.webp'
 
             }
 
             //new icons from here
             else if (weatherCode == 66 || weatherCode == 67) {
-                return '/weather/day/freezing_rain.webp'; //Freezing Rain: Light and heavy intensity
+                return baseUrl + 'freezing_rain.webp'; //Freezing Rain: Light and heavy intensity
             }
             else if (weatherCode == 71 || weatherCode == 73 || weatherCode == 75) {
-                return '/weather/day/rain.webp'; //Snow fall: Slight, moderate, and heavy intensity
+                return baseUrl + 'rain.webp'; //Snow fall: Slight, moderate, and heavy intensity
             }
             else if (weatherCode == 77) {
-                return '/weather/day/snow.webp'; //Snow grains
+                return baseUrl + 'snow.webp'; //Snow grains
             }
             else if (weatherCode == 80 || weatherCode == 81 || weatherCode == 82) {
-                return '/weather/day/rain.webp'; //Rain showers: Slight, moderate, and violent
+                return baseUrl + 'rain.webp'; //Rain showers: Slight, moderate, and violent
             }
             else if (weatherCode == 85 || weatherCode == 86) {
-                return '/weather/day/rain.webp';//	Snow showers slight and heavy
+                return baseUrl + 'rain.webp';//	Snow showers slight and heavy
             }
             else if (weatherCode == 95) {
-                return '/weather/day/rain.webp';// Thunderstorm: Slight or moderate
+                return baseUrl + 'rain.webp';// Thunderstorm: Slight or moderate
             }
             else if (weatherCode == 96 || weatherCode == 99) {
-                return '/weather/day/rain.webp';// Thunderstorm with slight and heavy hail
+                return baseUrl + 'rain.webp';// Thunderstorm with slight and heavy hail
             }
             else {
-                return '/weather/day/rain.webp';
+                return baseUrl + 'rain.webp';
             }
         }
     }
@@ -80,7 +82,8 @@ export default {
             <thead>
                 <tr>
                     <th colspan="4">
-                        <h3 class="text-center">Your weather widget</h3>
+                        <!-- <h3 class="text-center">Your weather widget</h3> -->
+                        <h3 class="text-center">Meteo 7 giorni da ieri</h3>
                     </th>
                 </tr>
                 <tr>
@@ -268,7 +271,7 @@ div#table-sm {
 }
 
 td.hr_devider {
-    background-color: #3c3c3c3c;
+    background-color: #3c3c3c58;
 
     >hr {
         margin: 1px auto;
@@ -285,6 +288,10 @@ td.hr_devider {
 
     div#table-sm {
         display: block;
+    }
+
+    table {
+        margin-bottom: 0;
     }
 }
 </style>

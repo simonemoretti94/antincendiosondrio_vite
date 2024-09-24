@@ -49,4 +49,8 @@ export const state = reactive({
      */
     weather: null,
 
+    // shift page weather toggle button
+    openWeather: false,
+
+
 });
