@@ -44,4 +44,9 @@ export const state = reactive({
     isAdmin: false,
     formComponent: false,
 
+    /**
+     * weather variable container
+     */
+    weather: null,
+
 });

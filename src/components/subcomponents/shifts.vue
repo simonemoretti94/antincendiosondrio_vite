@@ -1,5 +1,6 @@
 <script>
 import { state } from '/state.js';
+import weather from './weather.vue';
 
 export default {
     name: 'shifts',
@@ -19,6 +20,9 @@ export default {
             user: '',
 
         }
+    },
+    components: {
+        weather,
     },
     mounted() {
         setTimeout(() => {
@@ -182,6 +186,9 @@ export default {
             src="https://www.3bmeteo.com/moduli_esterni/localita_7_giorni_compatto/6976/050505/d4d4d4/543dff/ffffff/it"
             class="w-100" height=192 frameborder="0"></iframe>
     </div>
+
+    <weather></weather>
+
 </template>
 
 <style scoped>
