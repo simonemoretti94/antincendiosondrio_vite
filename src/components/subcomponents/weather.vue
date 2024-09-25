@@ -95,7 +95,7 @@ export default {
             </thead>
             <tbody>
                 <tr v-if="state.weather" v-for="(day, index) in state.weather.daily.sunrise" class="content">
-                    <td class="text-left">
+                    <td class="text-left" :class="{ 'bg-yesterday': index == 0, 'bg-primary-light': index == 1 }">
                         <div class="d-flex td-1">
                             <div class="col-3">
                                 <div>
@@ -109,16 +109,16 @@ export default {
                             </div>
                         </div>
                     </td>
-                    <td class="center">
+                    <td class="center" :class="{ 'bg-yesterday': index == 0, 'bg-primary-light': index == 1 }">
                         <div>
                             <p><b>Temp. max: </b>{{ state.weather.daily.temperature_2m_max[index] }}&deg;</p>
                             <p><b>Temp. min: </b>{{ state.weather.daily.temperature_2m_min[index] }}&deg;</p>
                         </div>
                     </td>
-                    <td class="center">
+                    <td class="center" :class="{ 'bg-yesterday': index == 0, 'bg-primary-light': index == 1 }">
                         <p>{{ state.weather.daily.temperature_2m_max[index] }} <small>mm</small></p>
                     </td>
-                    <td class="center">
+                    <td class="center" :class="{ 'bg-yesterday': index == 0, 'bg-primary-light': index == 1 }">
                         <p>{{ state.weather.daily.wind_speed_10m_max[index] }} <small>km/h</small></p>
                     </td>
                 </tr>
@@ -137,7 +137,7 @@ export default {
             </thead>
             <tbody>
                 <tr>
-                    <td class="center">
+                    <td class="center" :class="{ 'bg-yesterday': index == 0, 'bg-primary-light': index == 1 }">
                         <div class="d-flex td-1">
                             <div>
                                 <p>
@@ -151,7 +151,7 @@ export default {
                             </div>
                         </div>
                     </td>
-                    <td class="center">
+                    <td class="center" :class="{ 'bg-yesterday': index == 0, 'bg-primary-light': index == 1 }">
                         <div>
                             <p><b>Temp. max: </b>{{ state.weather.daily.temperature_2m_max[index] }}&deg;</p>
                             <p><b>Temp. min: </b>{{ state.weather.daily.temperature_2m_min[index] }}&deg;</p>
@@ -167,15 +167,16 @@ export default {
             </thead>
             <tbody>
                 <tr id="tr-m-560">
-                    <td class="center">
+                    <td class="center" :class="{ 'bg-yesterday': index == 0, 'bg-primary-light': index == 1 }">
                         <p>{{ state.weather.daily.temperature_2m_max[index] }} <small>mm</small></p>
                     </td>
-                    <td class="center">
+                    <td class="center" :class="{ 'bg-yesterday': index == 0, 'bg-primary-light': index == 1 }">
                         <p>{{ state.weather.daily.wind_speed_10m_max[index] }} <small>km/h</small></p>
                     </td>
                 </tr>
                 <tr>
-                    <td class="hr_devider" colspan="2">
+                    <td class="hr_devider" :class="{ 'd-none': index == state.weather.daily.weather_code.length - 1 }"
+                        colspan="2">
                         <hr>
                     </td>
                 </tr>
@@ -187,6 +188,14 @@ export default {
 </template>
 
 <style scoped>
+.bg-yesterday {
+    background-color: #fffdf5;
+}
+
+.bg-primary-light {
+    background-color: #418dff !important;
+}
+
 .center {
     text-align: center;
 }
