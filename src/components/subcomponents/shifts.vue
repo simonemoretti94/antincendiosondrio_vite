@@ -45,7 +45,6 @@ export default {
             /**
              * in produzione
              */
-            //this.imgPath = 'https://simonemoretti94.github.io/antincendiosondrio_vite/months/' + this.monthImage + '.jpg';
             this.imgPath = '/antincendiosondrio_vite/months/' + this.monthImage + '.jpg';
 
             /**

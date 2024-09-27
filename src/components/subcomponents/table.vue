@@ -35,11 +35,21 @@ export default {
 
             if (this.month && this.month.schedule) {
                 //console.log(this.month, this.month.schedule);
+
                 this.month.schedule.forEach((element, index) => {
-                    if (element.dayShift.includes(this.user)) {
-                        this.dayHours += 12;
-                    } else if (element.nightShift.includes(this.user)) {
+                    if (element.nightShift.includes(this.user) && element.psShift.includes(this.user)) {
                         this.nightHours += 12;
+                        this.dayHours += 6;
+                    }
+                    else if (element.dayShift.includes(this.user) && element.nightShift.includes(this.user)) {
+                        this.dayHours += 12;
+                        this.nightHours += 12;
+                    }
+                    else if (element.nightShift.includes(this.user)) {
+                        this.nightHours += 12;
+                    }
+                    else if (element.dayShift.includes(this.user)) {
+                        this.dayHours += 12;
                     }
                     else if (element.psShift.includes(this.user)) {
                         //this.psHours += 6;
@@ -48,9 +58,10 @@ export default {
                     else {
                         //console.log('day ', index + 1, ' is without ', this.user);
                     }
+                    console.log('day: ', index + 1, ' dayH: ', this.dayHours, ' nightH: ', this.nightHours);
                 });
             } else {
-                console.log('No schedule found for the selected month');
+                //console.log('No schedule found for the selected month');
             }
 
             //console.log('day: ', this.dayHours, ' night: ', this.nightHours, ' ps:', this.psHours);
